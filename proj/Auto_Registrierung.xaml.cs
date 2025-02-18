@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +18,9 @@ namespace EasyRentProj
     /// <summary>
     /// Interaktionslogik für Auto_Registrierung.xaml
     /// </summary>
-    public partial class Auto_Registrierung : Window
+    public partial class Auto_Registrierung : MetroWindow
     {
+        //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
         public Auto_Registrierung()
         {
             InitializeComponent();

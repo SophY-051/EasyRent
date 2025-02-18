@@ -16,20 +16,14 @@ using System.Windows.Shapes;
 namespace EasyRentProj
 {
     /// <summary>
-    /// Interaktionslogik für MainWindow.xaml
+    /// Interaktionslogik für Buchungen.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class Buchungen : MetroWindow
     {
         //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
-        public MainWindow()
+        public Buchungen()
         {
             InitializeComponent();
-        }
-        private void DoHauptmenu(object sender, RoutedEventArgs e)
-        {
-            Hauptmenu auto = new Hauptmenu();
-            auto.Show();
-
         }
     }
 }

@@ -20,16 +20,33 @@ namespace EasyRentProj
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
+        // Benutze Variablen 
+        private string benutzernameEingabe; 
         public MainWindow()
         {
             InitializeComponent();
-        }
-        private void DoHauptmenu(object sender, RoutedEventArgs e)
-        {
-            Hauptmenu auto = new Hauptmenu();
-            auto.Show();
+            //RA 18.02.2025 Passwort wird überprüft
 
+            string benutzernameEingabe = tbBenutzername.Text;
+
+            if (benutzernameEingabe == "SUPERUSER")
+            {
+                //RA 18.02.2025 Wenn Benutzer korrekt ist, wird das Hauptmenu geöffnet
+                Hauptmenu menu = new Hauptmenu();
+                menu.Show();
+            }
+            else
+            {
+                //RA 18.02.2025 Wenn Passwort falsch ist, wird eine Fehlermeldung ausgegeben
+                MessageBox.Show("Falsches Passwort");
+            }
         }
+        private void bHauptmenu(object sender, RoutedEventArgs e)
+        {
+            Hauptmenu menu = new Hauptmenu();
+            menu.Show();
+        }
+
     }
+
 }

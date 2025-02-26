@@ -8,13 +8,14 @@
         mc:Ignorable="d"
         Title="EasyRent Login" Height="450" Width="800">
     <Grid>
-        <Button Content="Hauptmenü" Click="bHauptmenu" Margin="235,323,259,0" Height="51" VerticalAlignment="Top"/>
+        <Button Content="Log-In" Click="bHauptmenu" Margin="235,323,259,0" Height="51" VerticalAlignment="Top"/>
 
         <PasswordBox x:Name="pbPasswort" HorizontalAlignment="Left" Margin="337,252,0,0" VerticalAlignment="Top" Width="204" Height="1" RenderTransformOrigin="0.5,0.5"></PasswordBox>
         <TextBlock HorizontalAlignment="Left" Margin="256,256,0,0" TextWrapping="Wrap" Text="Passwort" VerticalAlignment="Top" Height="18" Width="72"/>
 
         <TextBox x:Name="tbBenutzername" HorizontalAlignment="Left" Margin="337,200,0,0" VerticalAlignment="Top" Width="204" Height="1" RenderTransformOrigin="0.5,0.5"/>
-        <TextBlock HorizontalAlignment="Left" Margin="256,204,0,0" TextWrapping="Wrap" Text="E-Mail" VerticalAlignment="Top" Height="18" Width="46" RenderTransformOrigin="0.426,-0.351"/>
+        <TextBlock HorizontalAlignment="Left" Margin="256,204,0,0" TextWrapping="Wrap" Text="Benutzer" VerticalAlignment="Top" Height="18" Width="56" RenderTransformOrigin="0.426,-0.351"/>
+        <Image Margin="297,6,297,212" Source="/EasyRentLogo_Transparent.png" Stretch="Fill"/>
 
     </Grid>
 </mah:MetroWindow>

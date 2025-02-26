@@ -27,7 +27,11 @@ namespace EasyRentProj
             InitializeComponent();
             //RA 18.02.2025 Passwort wird überprüft
 
+        }
+        private void bHauptmenu(object sender, RoutedEventArgs e)
+        {
             string benutzernameEingabe = tbBenutzername.Text;
+
 
             if (benutzernameEingabe == "SUPERUSER")
             {
@@ -40,11 +44,7 @@ namespace EasyRentProj
                 //RA 18.02.2025 Wenn Passwort falsch ist, wird eine Fehlermeldung ausgegeben
                 MessageBox.Show("Falsches Passwort");
             }
-        }
-        private void bHauptmenu(object sender, RoutedEventArgs e)
-        {
-            Hauptmenu menu = new Hauptmenu();
-            menu.Show();
+
         }
 
     }

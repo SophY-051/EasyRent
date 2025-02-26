@@ -55,6 +55,7 @@ namespace EasyRentProj
         {
             MainWindow logout = new MainWindow();
             logout.Show();
+            this.Close();
         }
 
 

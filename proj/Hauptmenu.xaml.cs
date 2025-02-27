@@ -36,7 +36,7 @@ namespace EasyRentProj
         {
             Auto_Registrierung autoRegistrierung = new Auto_Registrierung();
             autoRegistrierung.Show();
-        
+
         }
 
         private void bBooking_Click(object sender, RoutedEventArgs e)

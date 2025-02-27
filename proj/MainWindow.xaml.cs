@@ -12,6 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+//SR 27.02.2025 Methode zur erstellung der DB hinzufügen
+using System.Data.SQLite;
+
 
 namespace EasyRentProj
 {

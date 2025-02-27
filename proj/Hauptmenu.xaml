@@ -6,14 +6,20 @@
         xmlns:local="clr-namespace:EasyRentProj"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="EasyRent Hauptmenü" Height="450" Width="800">
+        Title="Hauptmenü" Height="450" Width="800"
+		TitleCharacterCasing="Normal">
+
     <Grid>
-        <TextBlock Name="Ausgabe"></TextBlock>
-        <Button Content="Auto Registrierung" Click="bCarRegistration_Click" Margin="235,152,259,231" Width="306" Height="51"></Button>
-        <Button Content="Kundenverwaltung" Click="bCustomerManagement_Click" Margin="235,65,259,318" Width="306" Height="51"></Button>
-        <Button Content="Buchungen" Click="bBooking_Click" Margin="235,230,259,153" Width="306" Height="51"></Button>
-        <Button Content="Rückgabe" Click="bReturn_Click" Margin="235,305,259,78" Width="306" Height="51"></Button>
-        <Button Content="Logout" Click="bLogout_Click"  Margin="322,380,375,33" Width="103" Height="20"></Button> 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="333*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="Ausgabe" Grid.ColumnSpan="2"></TextBlock>
+        <Button Content="Auto Registrierung" Click="bCarRegistration_Click" Margin="101,152,259,231" Width="306" Height="51" Grid.Column="1"></Button>
+        <Button Content="Kundenverwaltung" Click="bCustomerManagement_Click" Margin="101,65,259,318" Width="306" Height="51" Grid.Column="1"></Button>
+        <Button Content="Buchungen" Click="bBooking_Click" Margin="101,230,259,153" Width="306" Height="51" Grid.Column="1"></Button>
+        <Button Content="Rückgabe" Click="bReturn_Click" Margin="101,305,259,78" Width="306" Height="51" Grid.Column="1"></Button>
+        <Button Content="Logout" Click="bLogout_Click"  Margin="188,380,355,29" Height="20" Grid.Column="1"/>
 
     </Grid>
 </mah:MetroWindow>

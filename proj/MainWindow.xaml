@@ -15,7 +15,7 @@
 
         <TextBox x:Name="tbBenutzername" HorizontalAlignment="Left" Margin="337,200,0,0" VerticalAlignment="Top" Width="204" Height="1" RenderTransformOrigin="0.5,0.5"/>
         <TextBlock HorizontalAlignment="Left" Margin="256,204,0,0" TextWrapping="Wrap" Text="Benutzer" VerticalAlignment="Top" Height="18" Width="56" RenderTransformOrigin="0.426,-0.351"/>
-        <Image Margin="297,6,297,212" Source="/EasyRentLogo_Transparent.png" Stretch="Fill"/>
+        <Image Margin="280,0,280,199" Source="Images/EasyRentLogo_Transparent.png" Stretch="Fill"/>
 
     </Grid>
 </mah:MetroWindow>

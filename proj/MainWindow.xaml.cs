@@ -23,24 +23,22 @@ namespace EasyRentProj
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        // Benutze Variablen 
-        private string benutzernameEingabe; 
         public MainWindow()
         {
             InitializeComponent();
-            //RA 18.02.2025 Passwort wird überprüft
-
         }
         private void bHauptmenu(object sender, RoutedEventArgs e)
         {
             string benutzernameEingabe = tbBenutzername.Text;
-
 
             if (benutzernameEingabe == "SUPERUSER")
             {
                 //RA 18.02.2025 Wenn Benutzer korrekt ist, wird das Hauptmenu geöffnet
                 Hauptmenu menu = new Hauptmenu();
                 menu.Show();
+
+                //RA 26.02.2025 Das Fenster wird geschlossen
+                this.Close();
             }
             else
             {

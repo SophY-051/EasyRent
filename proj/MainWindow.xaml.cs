@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 //SR 27.02.2025 Methode zur erstellung der DB hinzufügen
 using System.Data.SQLite;
+using EasyRentProj.DB.SQLite;
 
 
 namespace EasyRentProj
@@ -27,23 +28,29 @@ namespace EasyRentProj
         {
             InitializeComponent();
         }
-        private void bHauptmenu(object sender, RoutedEventArgs e)
+        private void bHauptmenu_Click(object sender, RoutedEventArgs e)
         {
-            string benutzernameEingabe = tbBenutzername.Text;
+            var benutzernameEingabe = tbBenutzername.Text;
+            var passwortEingabe = pbPasswort.Password;
 
-            if (benutzernameEingabe == "SUPERUSER")
+            using (DatenBankVerwaltung context = new DatenBankVerwaltung())
             {
-                //RA 18.02.2025 Wenn Benutzer korrekt ist, wird das Hauptmenu geöffnet
-                Hauptmenu menu = new Hauptmenu();
-                menu.Show();
+                bool korrekteEingabe = context.Users.Any(user => user.Name == benutzernameEingabe && user.Password == passwortEingabe);
 
-                //RA 26.02.2025 Das Fenster wird geschlossen
-                this.Close();
-            }
-            else
-            {
-                //RA 18.02.2025 Wenn Passwort falsch ist, wird eine Fehlermeldung ausgegeben
-                MessageBox.Show("Falsches Passwort");
+                if (korrekteEingabe)
+                {
+                    //RA 18.02.2025 Wenn Benutzer korrekt ist, wird das Hauptmenu geöffnet
+                    Hauptmenu menu = new Hauptmenu();
+                    menu.Show();
+
+                    //RA 26.02.2025 Das Fenster wird geschlossen
+                    this.Close();
+                }
+                else
+                {
+                    //RA 18.02.2025 Wenn Passwort falsch ist, wird eine Fehlermeldung ausgegeben
+                    MessageBox.Show("Falsches Passwort");
+                }
             }
 
         }

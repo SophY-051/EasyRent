@@ -12,9 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-//SR 27.02.2025 Methode zur erstellung der DB hinzufügen
-using System.Data.SQLite;
-using EasyRentProj.DB.SQLite;
 
 
 namespace EasyRentProj
@@ -33,8 +30,6 @@ namespace EasyRentProj
             var benutzernameEingabe = tbBenutzername.Text;
             var passwortEingabe = pbPasswort.Password;
 
-            using (DatenBankVerwaltung context = new DatenBankVerwaltung())
-            {
                 bool korrekteEingabe = context.Users.Any(user => user.Name == benutzernameEingabe && user.Password == passwortEingabe);
 
                 if (korrekteEingabe)
@@ -51,7 +46,6 @@ namespace EasyRentProj
                     //RA 18.02.2025 Wenn Passwort falsch ist, wird eine Fehlermeldung ausgegeben
                     MessageBox.Show("Falsches Passwort");
                 }
-            }
 
         }
 

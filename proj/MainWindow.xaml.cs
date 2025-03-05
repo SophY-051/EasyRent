@@ -25,12 +25,12 @@ namespace EasyRentProj
         {
             InitializeComponent();
         }
-        private void bHauptmenu_Click(object sender, RoutedEventArgs e)
+        private void bLogIn(object sender, RoutedEventArgs e)
         {
             var benutzernameEingabe = tbBenutzername.Text;
             var passwortEingabe = pbPasswort.Password;
 
-                bool korrekteEingabe = context.Users.Any(user => user.Name == benutzernameEingabe && user.Password == passwortEingabe);
+                bool korrekteEingabe = benutzernameEingabe == passwortEingabe;
 
                 if (korrekteEingabe)
                 {

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="EasyRent Login" Height="550" Width="375">
     <Grid>
-        <Button Content="Log-In" Click="bHauptmenu" Margin="93,417,78,0" Height="26" VerticalAlignment="Top"/>
+        <Button Content="Log-In" Click="bLogIn" Margin="93,417,78,0" Height="26" VerticalAlignment="Top"/>
 
         <PasswordBox x:Name="pbPasswort" HorizontalAlignment="Left" Margin="93,328,0,0" VerticalAlignment="Top" Width="204" Height="1" RenderTransformOrigin="0.5,0.5" ></PasswordBox>
         <TextBlock HorizontalAlignment="Left" Margin="93,304,0,0" TextWrapping="Wrap" Text="Passwort" VerticalAlignment="Top" Height="18" Width="72"/>

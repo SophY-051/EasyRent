@@ -22,6 +22,8 @@ namespace EasyRentProj
     /// </summary>
     public partial class Auto_Registrierung : MetroWindow
     {
+
+
         //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
         public Auto_Registrierung()
         {

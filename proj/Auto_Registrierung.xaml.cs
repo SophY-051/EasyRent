@@ -20,18 +20,17 @@ namespace EasyRentProj
     /// <summary>
     /// Interaktionslogik für Auto_Registrierung.xaml
     /// </summary>
-    
-    public partial class Auto_Registrierung : MetroWindow        //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
-    {
+    /// 
+
+     //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
+    public partial class Auto_Registrierung : MetroWindow       
  
         public Auto_Registrierung()
         {
            InitializeComponent();
 
             //Variabeln die alle wichtigen Daten für die Autoregistrierung speichert
-            public int id { get; set; }
-            public string marke { get; set; }
-            public string model { get; set; }
+
 
             public string registratedCars
             {

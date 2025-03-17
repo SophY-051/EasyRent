@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Auto_Registrierung.xaml~RF19243cc.TMP" />
     <None Remove="Data.db" />
     <None Remove="Data.db-journal" />
   </ItemGroup>

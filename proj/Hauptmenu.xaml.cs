@@ -23,7 +23,7 @@ namespace EasyRentProj
             InitializeComponent();
         }
 
-        private void bCustomerManagement_Click(object sender, RoutedEventArgs e)
+        private void bKundenVerwaltung_Click(object sender, RoutedEventArgs e)
         {
             //Neue Instanz in der variable kundeverwaltung erstellt 
             Kundenverwaltung kundeverwaltung = new Kundenverwaltung();
@@ -32,20 +32,20 @@ namespace EasyRentProj
 
         }
 
-        private void bCarRegistration_Click(object sender, RoutedEventArgs e)
+        private void bAutoRegistrierungen_Click(object sender, RoutedEventArgs e)
         {
             Auto_Registrierung autoRegistrierung = new Auto_Registrierung();
             autoRegistrierung.Show();
 
         }
 
-        private void bBooking_Click(object sender, RoutedEventArgs e)
+        private void bBuchungen_Click(object sender, RoutedEventArgs e)
         {
             Buchungen buchen = new Buchungen();
             buchen.Show();
         }
 
-        private void bReturn_Click(object sender, RoutedEventArgs e)
+        private void bRueckgaben_Click(object sender, RoutedEventArgs e)
         {
             Rueckgaben rueckgabe = new Rueckgaben();
             rueckgabe.Show();

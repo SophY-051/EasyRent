@@ -13,18 +13,18 @@ namespace EasyRentProj
     //SR 06.03.2025 DB file für die Auto Registrierung 
     class AutoRegSQLData 
     {
-        public static List<Auto_Registrierung> LoadCar()
+        public static List<Auto> LoadCar()
         {
             //SR 10.03.2025 Zur Absicherung vor Abstürtze -> schließt die DB Verbindung ordentlich 
             using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<Auto_Registrierung>("select * from carReg", new DynamicParameters());
+                var output = cnn.Query<Auto>("select * from carReg", new DynamicParameters());
                 //SR 10.03.2025 Sql Ausgabe wird als Liste ausgegebn
                 return output.ToList();
             }
         }
 
-        private static void SaveCar(Auto_Registrierung carReg)
+        private static void SaveCar(Auto carReg)
         {
             using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
             {

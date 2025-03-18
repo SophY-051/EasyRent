@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 
 
@@ -22,7 +23,7 @@ namespace EasyRentProj
     /// </summary>
     /// 
 
-     
+
     public partial class Auto_Registrierung : MetroWindow
     {
         //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
@@ -35,39 +36,36 @@ namespace EasyRentProj
         {
             InitializeComponent();
 
-            //SR 17.03.2025 new Auto-Objekt initalisieren
-            Auto auto1 = new Auto();
-            auto1.autoID = 001;
-            auto1.autoMarke = "VW";
-            auto1.autoModel = "Golf VI";
-            auto1.autoGetriebe = "S";
-            auto1.autoSitze = 4;
-            auto1.autoPreis = 40;
+            //SR 17.03.2025 new Auto-Objekt initalisiere 
 
-            CarRegGridXAML.Items.Add(auto1);
-
-            Auto auto2 = new Auto();
-            auto1.autoID = 002;
-            auto1.autoMarke = "Audi";
-            auto1.autoModel = "A1 Sport Paket, 2024";
-            auto1.autoGetriebe = "A";
-            auto1.autoSitze = 4;
-            auto1.autoPreis = 124;
-
-            CarRegGridXAML.Items.Add(auto2);
         }
 
-        /*SR 18.02.2025 Variabeln die alle wichtigen Daten für die Autoregistrierung speichert
-        public string registratedCar
-            {
-                get
+
+        private void bAutoHinzufuegen_Click(object sender, RoutedEventArgs e)
+        {
+            //SR 18.03.2025 Mit dem Button Auto hinzufügen wird ein temporeres Auto Object erstellt und damit kann dann ein neues Auto hinzugefügt werden
+            Auto tempAuto = new Auto();
+            tempAuto.autoID = tbAutoID.Text;
+            tempAuto.autoMarke = tbAutoMarke.Text;
+            tempAuto.autoModel = tbAutoModel.Text;
+            tempAuto.autoGetriebe = tbGetriebe.Text;
+            tempAuto.autoSitze = tbSitze.Text;
+            tempAuto.autoPreis = tbPreis.Text;
+
+            CarRegGridXAML.Items.Add(tempAuto);
+        }
+
+            /*SR 18.02.2025 Variabeln die alle wichtigen Daten für die Autoregistrierung speichert
+            public string registratedCar
                 {
-                return $"{Marke} {Model}";
-                }
-                
-            } */
+                    get
+                    {
+                    return $"{Marke} {Model}";
+                    }
+
+                } */
 
 
 
+        }
     }
-}

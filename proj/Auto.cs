@@ -10,12 +10,12 @@ namespace EasyRentProj
     public class Auto
     {
         //SR 17.03.25 Eigenschafen der Auto-Klasse
-        public string autoID {get; set;}
+        public int autoID {get; set;}
         public string autoMarke {get; set;}
         public string autoModel {get; set;}
         public string autoGetriebe { get; set;}
         public string autoSitze {get; set;}
-        public string autoPreis {get; set;}
+        public int autoPreis {get; set;}
       
 
 

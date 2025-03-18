@@ -21,15 +21,9 @@
         <TextBox x:Name="tbSitze" HorizontalAlignment="Left" Margin="107,189,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="98"/>
         <TextBox x:Name="tbPreis" HorizontalAlignment="Left" Height="14" Margin="107,221,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="98" />
         <Button Content="Auto hinzufügen" Click="bAutoHinzufuegen_Click" Margin="32,266,607,131"/>
+        <Button Content="Aktualisieren" Click="bDatenAktualisieren_Click" Margin="32,315,607,82"/>
         <DataGrid x:Name="CarRegGridXAML" Margin="280,59,10,111">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Preis" Binding= "{Binding autoPreis}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="Marke" Binding="{Binding autoMarke}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="Model" Binding= "{Binding autoModel}" Width="110"></DataGridTextColumn>
-                <DataGridTextColumn Header="Getriebe" Binding= "{Binding autoGetriebe}" Width="85"></DataGridTextColumn>
-                <DataGridTextColumn Header="Sitze" Binding= "{Binding autoSitze}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="ID" Binding= "{Binding autoID}" Width="60"></DataGridTextColumn>
-
             </DataGrid.Columns>
         </DataGrid>
 

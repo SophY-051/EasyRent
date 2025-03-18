@@ -1,6 +1,7 @@
 ﻿using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,11 +28,7 @@ namespace EasyRentProj
     public partial class Auto_Registrierung : MetroWindow
     {
         //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
-        //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
-        /*private void TextBox_TextChanged()
-        {
 
-        }*/
         public Auto_Registrierung()
         {
             InitializeComponent();
@@ -40,32 +37,50 @@ namespace EasyRentProj
 
         }
 
+        private ObservableCollection<Auto> auto = new ObservableCollection<Auto>(); //golabe Variabel
+
+        private void LoadCar() 
+        {
+            auto = new ObservableCollection<Auto>(AutoRegSQLData.LoadCar());
+            WireUpCarList(); // Aktualisiert die Datenquelle des Grids
+
+        }
+
+        private void WireUpCarList() 
+        {
+            CarRegGridXAML.ItemsSource = null;  // Datenquelle erst zurücksetzen
+            CarRegGridXAML.ItemsSource = auto; // Danach neue Datenquelle zuweisen
+        }
+            
+        
+
+        private void bDatenAktualisieren_Click(object sender, RoutedEventArgs e) 
+        {
+            LoadCar();
+        
+        }
 
         private void bAutoHinzufuegen_Click(object sender, RoutedEventArgs e)
         {
             //SR 18.03.2025 Mit dem Button Auto hinzufügen wird ein temporeres Auto Object erstellt und damit kann dann ein neues Auto hinzugefügt werden
-            Auto tempAuto = new Auto();
-            tempAuto.autoID = tbAutoID.Text;
-            tempAuto.autoMarke = tbAutoMarke.Text;
-            tempAuto.autoModel = tbAutoModel.Text;
-            tempAuto.autoGetriebe = tbGetriebe.Text;
-            tempAuto.autoSitze = tbSitze.Text;
-            tempAuto.autoPreis = tbPreis.Text;
+            Auto a = new Auto();
+            try
+            {
+                a.autoMarke = tbAutoMarke.Text;
+                a.autoModel = tbAutoModel.Text;
+                a.autoGetriebe = tbGetriebe.Text;
+                a.autoSitze = tbSitze.Text;
+                a.autoPreis = int.Parse(tbPreis.Text);
 
-            CarRegGridXAML.Items.Add(tempAuto);
+                AutoRegSQLData.SaveCar(a); // In die Datenbank speichern
+                auto.Add(a); // In die ObservableCollection hinzufügen
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show($"Fehler beim Hinzufügen: {ex.Message}");
+            }
+
         }
-
-            /*SR 18.02.2025 Variabeln die alle wichtigen Daten für die Autoregistrierung speichert
-            public string registratedCar
-                {
-                    get
-                    {
-                    return $"{Marke} {Model}";
-                    }
-
-                } */
-
-
 
         }
     }

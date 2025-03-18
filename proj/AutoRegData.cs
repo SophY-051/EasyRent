@@ -16,23 +16,25 @@ namespace EasyRentProj
         public static List<Auto> LoadCar()
         {
             //SR 10.03.2025 Zur Absicherung vor Abstürtze -> schließt die DB Verbindung ordentlich 
-            using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
+            using (IDbConnection cnn = new SqliteConnection("Data Source=C:\\Users\\reimc\\source\\repos\\EasyRent\\proj\\Data.db;"))
             {
-                var output = cnn.Query<Auto>("select * from carReg", new DynamicParameters());
+                var output = cnn.Query<Auto>("select * from tAutoReg", new DynamicParameters());
                 //SR 10.03.2025 Sql Ausgabe wird als Liste ausgegebn
                 return output.ToList();
             }
         }
 
-        private static void SaveCar(Auto carReg)
+        public static void SaveCar(Auto autoReg)
         {
-            using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
+            //SR 18.03.2024 Methode um neu erstelle Auto Objekte in der db zu speichern
+            using (IDbConnection cnn = new SqliteConnection("Data Source=C:\\Users\\reimc\\source\\repos\\EasyRent\\proj\\Data.db;"))
             {
-                cnn.Execute("insert into carReg(marke, model) values(@marke, @model)", carReg);
+                //SR 18.03.2024 SQL Abfrage mit @ = Auto eigenschaften
+                cnn.Execute("insert into tAutoReg (autoMarke, autoModel,autoGetriebe,autoSitze,autoPreis) values(@autoMarke, @autoModel,@autoGetriebe,@autoSitze,@autoPreis)", autoReg);
             }
         }
 
-        //SR 10.03.2025 Verbindung mit Connectionstring aus der App.config Datei -> Verbindung zu DB Pfad
+        //SR 10.03.2025 Verbindung mit Connectionstring aus der App.config Datei -> Verbindung zu DB Pfad flexibler als so wie in save cars
         private static string LoadConnectionString(string id = "SQLiteDB")
         { 
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;

@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="EasyRent Login" Height="550" Width="375"
         ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
  >
     <Grid>
         <Button Content="Log-In" Click="bLogIn" Margin="105,415,91,0" Height="31" VerticalAlignment="Top" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" />

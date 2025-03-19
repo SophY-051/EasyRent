@@ -18,6 +18,6 @@
         <TextBox Name="tbBenutzername" HorizontalAlignment="Left" Margin="93,260,0,0" VerticalAlignment="Top" Width="204" Height="1" RenderTransformOrigin="0.5,0.5" />
         <TextBlock HorizontalAlignment="Left" Margin="93,237,0,0" TextWrapping="Wrap" Text="Benutzer" VerticalAlignment="Top" Height="18" Width="56" RenderTransformOrigin="0.426,-0.351"/>
 
-        <Image Source="C:\Users\adam\source\repos\EasyRent\proj\Images\EasyRentLogo_Transparent.png" Width="218" Margin="86,29,0,288" HorizontalAlignment="Left"/>
+        <Image x:Name="imgLogo" Source="pack://application:,,,/Images/EasyRentLogo_Transparent.png" Height="286" VerticalAlignment="Top" Margin="0,-13,-15,0"/>
     </Grid>
 </mah:MetroWindow>

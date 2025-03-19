@@ -19,6 +19,7 @@
     <None Remove="Auto_Registrierung.xaml~RF19243cc.TMP" />
     <None Remove="Data.db" />
     <None Remove="Data.db-journal" />
+    <None Remove="Images\EasyRentLogo_Transparent.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +30,12 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Core" Version="9.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\EasyRentLogo_Transparent.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace EasyRentProj
@@ -21,9 +22,24 @@ namespace EasyRentProj
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+
         public MainWindow()
         {
             InitializeComponent();
+            LadeLogo(); //RA 19.03.2025 Logo wird geladen
+        }
+
+        private void LadeLogo()
+        {
+            try
+            {
+                // Bild aus den Projektressourcen laden
+                imgLogo.Source = new BitmapImage(new Uri("pack://application:,,,/Images/EasyRentLogo_Transparent.png"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fehler beim Laden des Logos: " + ex.Message);
+            }
         }
         private void bLogIn(object sender, RoutedEventArgs e)
         {
@@ -45,8 +61,9 @@ namespace EasyRentProj
                 {
                     //RA 18.02.2025 Wenn Passwort falsch ist, wird eine Fehlermeldung ausgegeben
                     MessageBox.Show("Falsches Passwort");
-                }
+            }
 
+    
         }
 
     }

@@ -60,6 +60,7 @@ namespace EasyRentProj
         
         }
 
+
         private void bAutoHinzufuegen_Click(object sender, RoutedEventArgs e)
         {
             //SR 18.03.2025 Mit dem Button Auto hinzufügen wird ein temporeres Auto Object erstellt und damit kann dann ein neues Auto hinzugefügt werden
@@ -75,12 +76,23 @@ namespace EasyRentProj
                 AutoRegSQLData.SaveCar(a); // In die Datenbank speichern
                 auto.Add(a); // In die ObservableCollection hinzufügen
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show($"Fehler beim Hinzufügen: {ex.Message}");
+            }
+        }
+
+        private void bAutoLoeschen_Click(object sender, RoutedEventArgs e)
+        {
+            //SR 19.03.2025 Button um Regestrierte Autos aus der Datenbank zu löschen
+            var selectedCars = CarRegGridXAML.SelectedItems.Cast<Auto>().ToList();
+            foreach (var car in selectedCars)
+            {
+                auto.Remove(car);
+                AutoRegSQLData.DeleteCar(car);
             }
 
         }
 
-        }
     }
+}

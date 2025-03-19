@@ -24,6 +24,7 @@ namespace EasyRentProj
             }
         }
 
+
         public static void SaveCar(Auto autoReg)
         {
             //SR 18.03.2024 Methode um neu erstelle Auto Objekte in der db zu speichern
@@ -39,6 +40,17 @@ namespace EasyRentProj
         { 
             return ConfigurationManager.ConnectionStrings[id].ConnectionString;
         }
+
+        public static void DeleteCar(Auto autoReg)
+        {
+            //SR 19.03.2025 Methode um Regestrierte Autos aus der Datenbank zu löschen
+            using (IDbConnection cnn = new SqliteConnection("Data Source=C:\\Users\\reimc\\source\\repos\\EasyRent\\proj\\Data.db;")) 
+            {
+                cnn.Execute("DELETE FROM tAutoReg WHERE autoID = @autoID", autoReg);
+            }
+           
+        }
+
 
     }
 }

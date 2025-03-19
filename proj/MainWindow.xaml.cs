@@ -26,21 +26,10 @@ namespace EasyRentProj
         public MainWindow()
         {
             InitializeComponent();
-            LadeLogo(); //RA 19.03.2025 Logo wird geladen
+         
         }
 
-        private void LadeLogo()
-        {
-            try
-            {
-                // Bild aus den Projektressourcen laden
-                imgLogo.Source = new BitmapImage(new Uri("pack://application:,,,/Images/EasyRentLogo_Transparent.png"));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Fehler beim Laden des Logos: " + ex.Message);
-            }
-        }
+
         private void bLogIn(object sender, RoutedEventArgs e)
         {
             var benutzernameEingabe = tbBenutzername.Text;

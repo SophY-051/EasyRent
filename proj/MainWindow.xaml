@@ -6,15 +6,18 @@
         xmlns:local="clr-namespace:EasyRentProj"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="EasyRent Login" Height="550" Width="375">
+        Title="EasyRent Login" Height="550" Width="375"
+        ResizeMode="NoResize"
+ >
     <Grid>
-        <Button Content="Log-In" Click="bLogIn" Margin="93,417,78,0" Height="26" VerticalAlignment="Top"/>
+        <Button Content="Log-In" Click="bLogIn" Margin="105,415,91,0" Height="31" VerticalAlignment="Top" Style="{StaticResource MahApps.Styles.Button.Square.Accent}" />
 
         <PasswordBox x:Name="pbPasswort" HorizontalAlignment="Left" Margin="93,328,0,0" VerticalAlignment="Top" Width="204" Height="1" RenderTransformOrigin="0.5,0.5" ></PasswordBox>
         <TextBlock HorizontalAlignment="Left" Margin="93,304,0,0" TextWrapping="Wrap" Text="Passwort" VerticalAlignment="Top" Height="18" Width="72"/>
 
-        <TextBox x:Name="tbBenutzername" HorizontalAlignment="Left" Margin="93,260,0,0" VerticalAlignment="Top" Width="204" Height="1" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox Name="tbBenutzername" HorizontalAlignment="Left" Margin="93,260,0,0" VerticalAlignment="Top" Width="204" Height="1" RenderTransformOrigin="0.5,0.5" />
         <TextBlock HorizontalAlignment="Left" Margin="93,237,0,0" TextWrapping="Wrap" Text="Benutzer" VerticalAlignment="Top" Height="18" Width="56" RenderTransformOrigin="0.426,-0.351"/>
 
+        <Image Source="C:\Users\adam\source\repos\EasyRent\proj\Images\EasyRentLogo_Transparent.png" Width="218" Margin="86,29,0,288" HorizontalAlignment="Left"/>
     </Grid>
 </mah:MetroWindow>

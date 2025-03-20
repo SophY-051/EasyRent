@@ -13,10 +13,7 @@
                  >
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="67*"/>
-            <ColumnDefinition Width="333*"/>
-        </Grid.ColumnDefinitions>
+        
         <TextBlock Name="Ausgabe" Grid.ColumnSpan="2"></TextBlock>
         <Button Content="Auto Registrierung" Click="bAutoRegistrierungen_Click" Margin="301,240,459,413" Width="306" Height="51" Grid.Column="1"></Button>
         <Button Content="Kundenverwaltung" Click="bKundenVerwaltung_Click" Margin="301,162,459,483" Width="306" Grid.Column="1"/>

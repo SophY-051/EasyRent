@@ -19,8 +19,5 @@ namespace EasyRentProj
       
 
 
-
-
-
     }
 }

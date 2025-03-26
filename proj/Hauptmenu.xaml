@@ -13,12 +13,22 @@
                  >
 
     <Grid>
+<<<<<<< HEAD
 
         <Button Content="Auto Registrierung" Click="bAutoRegistrierungen_Click" Margin="487,252,487,401" Width="306" Height="51"/>
         <Button Content="Kundenverwaltung" Click="bKundenVerwaltung_Click" Margin="487,162,487,483" Width="306"/>
         <Button Content="Buchungen" Click="bBuchungen_Click" Margin="487,327,487,326" Width="306" Height="51"/>
         <Button Content="Rückgabe" Click="bRueckgaben_Click" Margin="487,405,487,248" Width="306" Height="51"/>
         <Button Content="Logout" Click="bLogout_Click"  Margin="536,484,536,195" Height="20"/>
+=======
+        
+        <TextBlock Name="Ausgabe" Grid.ColumnSpan="2"></TextBlock>
+        <Button Content="Auto Registrierung" Click="bAutoRegistrierungen_Click" Margin="301,240,459,413" Width="306" Height="51" Grid.Column="1"></Button>
+        <Button Content="Kundenverwaltung" Click="bKundenVerwaltung_Click" Margin="301,162,459,483" Width="306" Grid.Column="1"/>
+        <Button Content="Buchungen" Click="bBuchungen_Click" Margin="301,322,459,331" Width="306" Height="51" Grid.Column="1"></Button>
+        <Button Content="Rückgabe" Click="bRueckgaben_Click" Margin="301,394,459,259" Width="306" Height="51" Grid.Column="1"></Button>
+        <Button Content="Logout" Click="bLogout_Click"  Margin="339,461,496,218" Height="20" Grid.Column="1"/>
+>>>>>>> 308563466c74819f4a18f762b4e794bfb4f35f02
 
     </Grid>
 </mah:MetroWindow>

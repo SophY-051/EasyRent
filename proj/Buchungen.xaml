@@ -1,15 +1,18 @@
 ﻿<mah:MetroWindow  x:Class="EasyRentProj.Buchungen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EasyRentProj"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="EasyRent Buchungen" Height="1080" Width="1920"
+        Title="EasyRent Buchungen" Height="720" Width="1280"  
+        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen">
+		TitleCharacterCasing="Normal">
     <Grid>
+<<<<<<< HEAD
         <Label Content="Kunde Name" HorizontalAlignment="Left" Height="28" Margin="167,202,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Start Datum" HorizontalAlignment="Left" Height="28" Margin="167,291,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="End Datum" HorizontalAlignment="Left" Height="28" Margin="167,390,0,0" VerticalAlignment="Top" Width="100"/>
@@ -24,5 +27,12 @@
         <Button Content="Buchung Löschen" Click="bBuchungLoeschen_Click" Width="200" Height="50" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1131,690,0,0"/>
 
         <DataGrid x:Name="BuchungGridXAML" Margin="538,169,368,425" AutoGenerateColumns="True" />
+=======
+        <Label Content="Auto Registrierungsnummer" HorizontalAlignment="Left" Height="36" Margin="146,101,0,0" VerticalAlignment="Top" Width="177"/>
+        <Label Content="Kunden Nummer" HorizontalAlignment="Left" Height="27" Margin="146,142,0,0" VerticalAlignment="Top" Width="107"/>
+        <Label Content="Kunden Name" HorizontalAlignment="Left" Height="27" Margin="146,190,0,0" VerticalAlignment="Top" Width="139"/>
+        <mah:DateTimePicker Name="pStartDatum" Controls:TextBoxHelper.Watermark="Start Datum" HorizontalAlignment="Left" Height="24" Margin="146,308,0,0" VerticalAlignment="Top" Width="139"/>
+        <mah:DateTimePicker Name="pEndDatum" Controls:TextBoxHelper.Watermark="End Datum" HorizontalAlignment="Left" Height="24" Margin="146,243,0,0" VerticalAlignment="Top" Width="139"/>
+>>>>>>> 308563466c74819f4a18f762b4e794bfb4f35f02
     </Grid>
 </mah:MetroWindow>

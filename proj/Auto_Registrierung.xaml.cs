@@ -32,9 +32,7 @@ namespace EasyRentProj
         public Auto_Registrierung()
         {
             InitializeComponent();
-
-            //SR 17.03.2025 new Auto-Objekt initalisiere 
-
+            LoadCar();
         }
 
         private ObservableCollection<Auto> auto = new ObservableCollection<Auto>(); //golabe Variabel
@@ -75,6 +73,7 @@ namespace EasyRentProj
 
                 AutoRegSQLData.SaveCar(a); // In die Datenbank speichern
                 auto.Add(a); // In die ObservableCollection hinzufügen
+                WireUpCarList();
             }
             catch (Exception ex)
             {

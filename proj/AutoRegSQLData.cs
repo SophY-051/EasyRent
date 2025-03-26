@@ -16,7 +16,7 @@ namespace EasyRentProj
         public static List<Auto> LoadCar()
         {
             //SR 10.03.2025 Zur Absicherung vor Abstürtze -> schließt die DB Verbindung ordentlich 
-            using (IDbConnection cnn = new SqliteConnection("Data Source=C:\\Users\\reimc\\source\\repos\\EasyRent\\proj\\Data.db;"))
+            using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
             {
                 var output = cnn.Query<Auto>("select * from tAutoReg", new DynamicParameters());
                 //SR 10.03.2025 Sql Ausgabe wird als Liste ausgegebn
@@ -28,7 +28,7 @@ namespace EasyRentProj
         public static void SaveCar(Auto autoReg)
         {
             //SR 18.03.2024 Methode um neu erstelle Auto Objekte in der db zu speichern
-            using (IDbConnection cnn = new SqliteConnection("Data Source=C:\\Users\\reimc\\source\\repos\\EasyRent\\proj\\Data.db;"))
+            using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
             {
                 //SR 18.03.2024 SQL Abfrage mit @ = Auto eigenschaften
                 cnn.Execute("insert into tAutoReg (autoMarke, autoModel,autoGetriebe,autoSitze,autoPreis) values(@autoMarke, @autoModel,@autoGetriebe,@autoSitze,@autoPreis)", autoReg);
@@ -44,11 +44,19 @@ namespace EasyRentProj
         public static void DeleteCar(Auto autoReg)
         {
             //SR 19.03.2025 Methode um Regestrierte Autos aus der Datenbank zu löschen
-            using (IDbConnection cnn = new SqliteConnection("Data Source=C:\\Users\\reimc\\source\\repos\\EasyRent\\proj\\Data.db;")) 
+            using (IDbConnection cnn = new SqliteConnection(LoadConnectionString())) 
             {
                 cnn.Execute("DELETE FROM tAutoReg WHERE autoID = @autoID", autoReg);
             }
            
+        }
+        public static int GetAutoPreis(int autoID)
+        {
+            //SR 26.03.2025 Methode , um den Preis für ein spezifisches Auto abzurufen
+            using (IDbConnection cnn = new SqliteConnection(LoadConnectionString()))
+            {
+                return cnn.QuerySingle<int>("SELECT autoPreis FROM tAutoReg WHERE autoID = @autoID", new { autoID });
+            }
         }
 
 

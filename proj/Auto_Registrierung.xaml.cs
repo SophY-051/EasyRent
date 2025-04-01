@@ -74,6 +74,7 @@ namespace EasyRentProj
                 AutoRegSQLData.SaveCar(a); // In die Datenbank speichern
                 auto.Add(a); // In die ObservableCollection hinzufügen
                 WireUpCarList();
+                LoadCar();
             }
             catch (Exception ex)
             {

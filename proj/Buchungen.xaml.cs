@@ -29,8 +29,15 @@ namespace EasyRentProj
         {
             InitializeComponent();
             LoadBookings();
+            LoadAutoID();
         }
 
+
+        private void LoadAutoID()
+        {
+            var autoIDs = AutoRegSQLData.LoadCar();
+            cbAutoAuswahl.ItemsSource = autoIDs;
+        }
         private void LoadBookings()
         {
             buchungen = new ObservableCollection<Buchung>(BuchungSQLData.LoadBookings());
@@ -74,6 +81,16 @@ namespace EasyRentProj
             }
         }
 
+        private int GetSelectedAutoID()
+        {
+            if (cbAutoAuswahl.SelectedItem != null)
+            {
+                var selectedAuto = (Auto)cbAutoAuswahl.SelectedItem;
+                return selectedAuto.autoID;
+            }
+            return 0; // Rückgabe von 0, wenn kein Auto ausgewählt ist
+        }
+
         private void bBuchungLoeschen_Click(object sender, RoutedEventArgs e)
         {
             var selectedBookings = BuchungGridXAML.SelectedItems.Cast<Buchung>().ToList();
@@ -97,4 +114,6 @@ namespace EasyRentProj
         }
 
     }
+
+
 }

@@ -1,26 +1,83 @@
 ﻿using MahApps.Metro.Controls;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EasyRentProj
 {
-    /// <summary>
-    /// Interaktionslogik für Kundenverwaltung.xaml
-    /// </summary>
-    public partial class Kundenverwaltung : MetroWindow
+    public partial class KundenVerwaltung : MetroWindow
     {
-        InitializeComponent();
+        private ObservableCollection<Kunde> kunden = new ObservableCollection<Kunde>();
+
+        public KundenVerwaltung()
+        {
+            InitializeComponent();
+            LoadKunden();
+        }
+
+        private void LoadKunden()
+        {
+            kunden = new ObservableCollection<Kunde>(KundenSQLData.LoadKunden());
+            WireUpKundenList();
+        }
+
+        private void WireUpKundenList()
+        {
+            KundenGridXAML.ItemsSource = null;
+            KundenGridXAML.ItemsSource = kunden;
+        }
+
+        private void bKundeHinzufuegen_Click(object sender, RoutedEventArgs e)
+        {
+            Kunde kunde = new Kunde();
+            try
+            {
+                kunde.vorname = tbVorname.Text;
+                kunde.nachname = tbNachname.Text;
+                kunde.nummer = int.Parse(tbNummer.Text);
+                kunde.adresse = tbAdresse.Text;
+                kunde.email = tbEmail.Text;
+
+                KundenSQLData.SaveKunde(kunde);
+                kunden.Add(kunde);
+                WireUpKundenList();
+                LoadKunden();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Fehler beim Hinzufügen: {ex.Message}");
+            }
+        }
+
+        private void bKundeLoeschen_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedKunden = KundenGridXAML.SelectedItems.Cast<Kunde>().ToList();
+            foreach (var kunde in selectedKunden)
+            {
+                kunden.Remove(kunde);
+                KundenSQLData.DeleteKunde(kunde);
+            }
+            WireUpKundenList();
+        }
+
+        private void bDatenAktualisieren_Click(object sender, RoutedEventArgs e)
+        {
+            LoadKunden();
+        }
+
+        private void KundenGridXAML_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (KundenGridXAML.SelectedItem is Kunde selectedKunde)
+            {
+                tbKundenID.Text = selectedKunde.kundeID.ToString();
+                tbVorname.Text = selectedKunde.vorname;
+                tbNachname.Text = selectedKunde.nachname;
+                tbNummer.Text = selectedKunde.nummer.ToString();
+                tbAdresse.Text = selectedKunde.adresse;
+                tbEmail.Text = selectedKunde.email;
+            }
+        }
     }
 }

@@ -1,30 +1,16 @@
 ﻿using MahApps.Metro.Controls;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace EasyRentProj
 {
-    /// <summary>
-    /// Interaktionslogik für Buchungen.xaml
-    /// </summary>
-    /// 
     public partial class Buchungen : MetroWindow
     {
-        //SR 18.02.2025 Screen erstellt und mit API MahApp verbunden
-
         private ObservableCollection<Buchung> buchungen = new ObservableCollection<Buchung>();
+
         public Buchungen()
         {
             InitializeComponent();
@@ -32,12 +18,12 @@ namespace EasyRentProj
             LoadAutoID();
         }
 
-
         private void LoadAutoID()
         {
             var autoIDs = AutoRegSQLData.LoadCar();
             cbAutoAuswahl.ItemsSource = autoIDs;
         }
+
         private void LoadBookings()
         {
             buchungen = new ObservableCollection<Buchung>(BuchungSQLData.LoadBookings());
@@ -46,16 +32,15 @@ namespace EasyRentProj
 
         private void WireUpBookingList()
         {
-            BuchungGridXAML.ItemsSource = null; // Datenquelle zurücksetzen
-            BuchungGridXAML.ItemsSource = buchungen; // Neue Datenquelle zuweisen
+            BuchungGridXAML.ItemsSource = null;
+            BuchungGridXAML.ItemsSource = buchungen;
         }
 
         private void bBuchungHinzufuegen_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // Beispiel: autoID aus einer Auswahl im Frontend (z. B. ComboBox)
-                int autoID = GetSelectedAutoID(); // Funktion holt die ausgewählte AutoID
+                int autoID = GetSelectedAutoID();
                 if (autoID == 0)
                 {
                     MessageBox.Show("Bitte wählen Sie ein Auto aus!");
@@ -70,10 +55,9 @@ namespace EasyRentProj
                     buchungPreis = BerechneGesamtPreis(autoID, dpStartDatum.SelectedDate.Value, dpEndDatum.SelectedDate.Value)
                 };
 
-                // Speichern in der Datenbank
                 BuchungSQLData.SaveBooking(buchung);
                 buchungen.Add(buchung);
-                WireUpBookingList(); // Aktualisierung des DataGrid
+                WireUpBookingList();
             }
             catch (Exception ex)
             {
@@ -88,7 +72,7 @@ namespace EasyRentProj
                 var selectedAuto = (Auto)cbAutoAuswahl.SelectedItem;
                 return selectedAuto.autoID;
             }
-            return 0; // Rückgabe von 0, wenn kein Auto ausgewählt ist
+            return 0;
         }
 
         private void bBuchungLoeschen_Click(object sender, RoutedEventArgs e)
@@ -97,23 +81,33 @@ namespace EasyRentProj
             foreach (var buchung in selectedBookings)
             {
                 buchungen.Remove(buchung);
-                BuchungSQLData.DeleteBooking(buchung); // Aus der DB löschen
+                BuchungSQLData.DeleteBooking(buchung);
             }
             WireUpBookingList();
         }
+
         private void bDatenAktualisieren_Click(object sender, RoutedEventArgs e)
         {
-            LoadBookings(); // Buchungen erneut laden
+            LoadBookings();
         }
 
         private int BerechneGesamtPreis(int autoID, DateTime startDatum, DateTime endDatum)
         {
             int autoPreis = AutoRegSQLData.GetAutoPreis(autoID);
             TimeSpan mietDauer = endDatum - startDatum;
-            return mietDauer.Days * autoPreis; // Gesamtpreis = Mietdauer * Tagespreis
+            return mietDauer.Days * autoPreis;
         }
 
+        private void BuchungGridXAML_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (BuchungGridXAML.SelectedItem is Buchung selectedBuchung)
+            {
+                tbBuchungsID.Text = selectedBuchung.buchungID.ToString();
+                cbAutoAuswahl.SelectedItem = selectedBuchung.autoID;
+                dpStartDatum.SelectedDate = selectedBuchung.startDatum;
+                dpEndDatum.SelectedDate = selectedBuchung.endDatum;
+                tbGesamtPreis.Text = selectedBuchung.buchungPreis.ToString();
+            }
+        }
     }
-
-
 }

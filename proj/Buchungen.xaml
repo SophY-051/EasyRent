@@ -1,4 +1,4 @@
-﻿<mah:MetroWindow  x:Class="EasyRentProj.Buchungen"
+﻿<mah:MetroWindow x:Class="EasyRentProj.Buchungen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
@@ -7,30 +7,29 @@
         xmlns:local="clr-namespace:EasyRentProj"
         xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         mc:Ignorable="d"
-        Title="EasyRent Buchungen" Height="720" Width="1280"  
+        Title="EasyRent Buchungen" Height="720" Width="1280"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-		TitleCharacterCasing="Normal"
- >
+        TitleCharacterCasing="Normal">
     <Grid>
-        <Label Content="Auto Registrierungsnummer" HorizontalAlignment="Left" Height="36" Margin="167,157,0,0" VerticalAlignment="Top" Width="161" RenderTransformOrigin="0.462,1.184"/>
-        <Label Content="Kunde Name" HorizontalAlignment="Left" Height="28" Margin="167,219,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.546,-0.32"/>
+        <Label Content="Buchungs-ID" HorizontalAlignment="Left" Height="28" Margin="167,107,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Auto Registrierungsnummer" HorizontalAlignment="Left" Height="36" Margin="167,157,0,0" VerticalAlignment="Top" Width="161"/>
+        <Label Content="Kunde Name" HorizontalAlignment="Left" Height="28" Margin="167,219,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="Start Datum" HorizontalAlignment="Left" Height="28" Margin="167,270,0,0" VerticalAlignment="Top" Width="100"/>
         <Label Content="End Datum" HorizontalAlignment="Left" Height="28" Margin="167,319,0,0" VerticalAlignment="Top" Width="100"/>
-        <Label Content="Gesamt Preis" HorizontalAlignment="Left" Height="28" Margin="167,369,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.082,0.623"/>
+        <Label Content="Gesamt Preis" HorizontalAlignment="Left" Height="28" Margin="167,369,0,0" VerticalAlignment="Top" Width="100"/>
 
+        <TextBox x:Name="tbBuchungsID" HorizontalAlignment="Left" Height="22" Margin="272,109,0,0" VerticalAlignment="Top" Width="111" IsReadOnly="True"/>
         <ComboBox x:Name="cbAutoAuswahl" HorizontalAlignment="Left" Height="28" Margin="354,165,0,0" VerticalAlignment="Top" Width="111" DisplayMemberPath="autoID"/>
         <DatePicker Name="dpStartDatum" Controls:TextBoxHelper.Watermark="Start Datum" HorizontalAlignment="Left" Height="23" Margin="272,272,0,0" VerticalAlignment="Top" Width="111"/>
-        <DatePicker Name="dpEndDatum" Controls:TextBoxHelper.Watermark="End Datum" HorizontalAlignment="Left" Height="0" Margin="272,321,0,0" VerticalAlignment="Top" Width="111"/>
-
-        <TextBox x:Name="tbGesamtPreis" HorizontalAlignment="Left" Height="22" Margin="272,371,0,0" VerticalAlignment="Top" Width="111" IsReadOnly="True" RenderTransformOrigin="0.141,0.732"/>
+        <DatePicker Name="dpEndDatum" Controls:TextBoxHelper.Watermark="End Datum" HorizontalAlignment="Left" Height="23" Margin="272,321,0,0" VerticalAlignment="Top" Width="111"/>
+        <TextBox x:Name="tbGesamtPreis" HorizontalAlignment="Left" Height="22" Margin="272,371,0,0" VerticalAlignment="Top" Width="111" IsReadOnly="True"/>
 
         <Button Content="Buchung Hinzufügen" Click="bBuchungHinzufuegen_Click" Width="132" Height="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="512,499,0,0"/>
         <Button Content="Daten Aktualisieren" Click="bDatenAktualisieren_Click" Width="132" Height="36" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="739,498,0,0"/>
         <Button Content="Buchung Löschen" Click="bBuchungLoeschen_Click" Width="132" Height="37" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="934,498,0,0"/>
 
-        
-        <DataGrid x:Name="BuchungGridXAML" Margin="512,143,182,230">
+        <DataGrid x:Name="BuchungGridXAML" Margin="512,143,182,230" SelectionChanged="BuchungGridXAML_SelectionChanged">
             <DataGrid.Columns>
             </DataGrid.Columns>
         </DataGrid>

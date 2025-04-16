@@ -30,29 +30,34 @@ namespace EasyRentProj
         }
 
 
-        private void bLogIn(object sender, RoutedEventArgs e)
+        private void bLogIn_Click(object sender, RoutedEventArgs e)
         {
-            var benutzernameEingabe = tbBenutzername.Text;
-            var passwortEingabe = pbPasswort.Password;
 
-                bool korrekteEingabe = benutzernameEingabe == passwortEingabe;
+            var Username = tbBenutzername.Text;
+            var Password = pbPasswort.Password;
 
-                if (korrekteEingabe)
+            using (UserLoginSQLData context = new UserLoginSQLData())
+            {
+                bool usergefunden = context.User.Any(user => user.Benutzername == Username && user.Passwort == Password);
+
+                if (usergefunden)
                 {
-                    //RA 18.02.2025 Wenn Benutzer korrekt ist, wird das Hauptmenu geöffnet
-                    Hauptmenu menu = new Hauptmenu();
-                    menu.Show();
-
-                    //RA 26.02.2025 Das Fenster wird geschlossen
-                    this.Close();
+                    Zugriff();
+                    Close();
                 }
                 else
                 {
-                    //RA 18.02.2025 Wenn Passwort falsch ist, wird eine Fehlermeldung ausgegeben
-                    MessageBox.Show("Falsches Passwort");
+                    MessageBox.Show("Benutzername oder Passwort falsch");
+                }
             }
 
-    
+        }
+
+
+        public void Zugriff()
+        {
+            Hauptmenu hauptmenu = new Hauptmenu();
+            hauptmenu.Show();
         }
 
     }

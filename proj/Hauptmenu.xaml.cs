@@ -26,7 +26,7 @@ namespace EasyRentProj
         private void bKundenVerwaltung_Click(object sender, RoutedEventArgs e)
         {
             //Neue Instanz in der variable kundeverwaltung erstellt 
-            Kundenverwaltung kundeverwaltung = new Kundenverwaltung();
+            KundenVerwaltung kundeverwaltung = new KundenVerwaltung();
             //Methode um das Fenster zu öffnen
             kundeverwaltung.Show();
 

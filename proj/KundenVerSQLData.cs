@@ -16,9 +16,8 @@ namespace EasyRentProj
         private static string path = ConfigurationManager.AppSettings["RENT_DB_PATH"];
 
         public static string Path { get => path; set => path = value; }
-    }
 
-            public static List<Auto> LoadCar()
+        public static List<Kunde> LoadCar()
         {
             //SR 10.03.2025 Zur Absicherung vor Abstürtze -> schließt die DB Verbindung ordentlich 
             using (IDbConnection cnn = new SqliteConnection($"Data Source={Path}"))
@@ -29,3 +28,5 @@ namespace EasyRentProj
             }
         }
     }
+
+}

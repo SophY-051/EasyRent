@@ -9,50 +9,69 @@
         Title="Hauptmenü" Height="720" Width="1280"  
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-		TitleCharacterCasing="Normal"
->
+        TitleCharacterCasing="Normal"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True">
 
     <Grid>
         
-        <TextBlock 
-            Name="Ausgabe" 
-            Grid.ColumnSpan="2">
-        </TextBlock>
-        
-        <Button 
-            Content="Auto Registrierung" 
-            Click="bAutoRegistrierungen_Click" 
-            Margin="487,225,487,428" 
-            Width="306" 
-            Height="51"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Name="Ausgabe" Grid.Row="0" Margin="20"/>
+
+        <Button Content="Kundenverwaltung" 
+                Click="bKundenVerwaltung_Click" 
+                Grid.Row="2"
+                Margin="20"
+                Width="306" 
+                Height="51"
+                HorizontalAlignment="Center"
         />
-        
-        <Button 
-            Content="Kundenverwaltung" 
-            Click="bKundenVerwaltung_Click" 
-            Margin="487,132,487,513" 
-            Width="306"
+
+        <Button Content="Auto Registrierung" 
+                Click="bAutoRegistrierungen_Click" 
+                Grid.Row="3"
+                Margin="20"
+                Width="306" 
+                Height="51"
+                HorizontalAlignment="Center"
         />
-        
-        <Button 
-            Content="Buchungen" 
-            Click="bBuchungen_Click" 
-            Margin="487,322,487,331" 
-            Width="306" 
-            Height="51"
+
+        <Button Content="Buchungen" 
+                Click="bBuchungen_Click" 
+                Grid.Row="4"
+                Margin="20"
+                Width="306" 
+                Height="51"
+                HorizontalAlignment="Center"
         />
-        <Button 
-            Content="Rückgabe" 
-            Click="bRueckgaben_Click" 
-            Margin="487,432,487,221" 
-            Width="306" 
-            Height="51"
+
+        <Button Content="Rückgabe" 
+                Click="bRueckgaben_Click" 
+                Grid.Row="5"
+                Margin="20"
+                Width="306" 
+                Height="51"
+                HorizontalAlignment="Center"
         />
-        
-        <Button 
-            Content="Logout" 
-            Click="bLogout_Click"  
-            Margin="545,522,545,155"
+
+        <Button Content="Logout" 
+                Click="bLogout_Click"  
+                Grid.Row="7"
+                Margin="20"
+                Width="306"
+                Height="51"
+                HorizontalAlignment="Center"
         />
         
     </Grid>

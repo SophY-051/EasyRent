@@ -12,22 +12,153 @@
         ResizeMode="NoResize"
 		TitleCharacterCasing="Normal">
     <Grid>
-        <Label Content="Marke" HorizontalAlignment="Left" Height="27" Margin="167,202,0,0" VerticalAlignment="Top" Width="59"/>
-        <Label Content="Model" HorizontalAlignment="Left" Height="28" Margin="167,291,0,0" VerticalAlignment="Top" Width="59" RenderTransformOrigin="1.797,3.001"/>
-        <Label Content="Getriebe" HorizontalAlignment="Left" Margin="167,390,0,0" VerticalAlignment="Top" Width="59" RenderTransformOrigin="0.805,0.868"/>
-        <Label  Content="Sitze" HorizontalAlignment="Left" Margin="167,473,0,0" VerticalAlignment="Top" Width="59" RenderTransformOrigin="0.07,0.437"/>
-        <Label Content="Preis" HorizontalAlignment="Left" Height="26" Margin="167,564,0,0" VerticalAlignment="Top" Width="57"/>
-        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="tbAutoMarke" HorizontalAlignment="Left" Height="46" Margin="282,201,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="160" RenderTransformOrigin="-0.335,0.43"/>
-        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="tbAutoModel" HorizontalAlignment="Left" Height="46" Margin="282,291,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="160" />
-        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="tbGetriebe" HorizontalAlignment="Left" Height="46" Margin="282,385,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="160"/>
-        <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="tbSitze" HorizontalAlignment="Left" Margin="282,473,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="160" Height="46"/>
-    <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="tbPreis" HorizontalAlignment="Left" Height="46" Margin="278,560,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="160" RenderTransformOrigin="0.5,0.5"/>
-    <Button Content="Auto Hinzufügen" Click="bAutoHinzufuegen_Click" Width="148" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="726,514,0,0" RenderTransformOrigin="0.45,-0.739"/>
-        <Button Content="Daten Aktualisieren" Click="bDatenAktualisieren_Click" Width="148" Height="31" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="541,514,0,0" RenderTransformOrigin="1.024,0.483"/>
-        <Button Content="Auto Löschen" Click="bAutoLoeschen_Click" Width="152" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="897,514,0,0" RenderTransformOrigin="0.78,6.041"/>
-        <DataGrid x:Name="CarRegGridXAML" Margin="574,216,254,240">
+        
+        <Label 
+            Content="Marke" 
+            HorizontalAlignment="Left" 
+            Height="27" 
+            Margin="167,202,0,0" 
+            VerticalAlignment="Top"
+            Width="59"
+        />
+
+        <Label 
+            Content="Model" 
+            HorizontalAlignment="Left"
+            Height="28"
+            Margin="167,291,0,0" 
+            VerticalAlignment="Top"
+            Width="59" 
+            RenderTransformOrigin="1.797,3.001"
+        />
+        
+        <Label 
+            Content="Getriebe" 
+            HorizontalAlignment="Left"
+            Margin="167,390,0,0"
+            VerticalAlignment="Top"
+            Width="59"
+            RenderTransformOrigin="0.805,0.868"
+        />
+        
+        <Label  
+            Content="Sitze" 
+            HorizontalAlignment="Left"
+            Margin="167,473,0,0" 
+            VerticalAlignment="Top"
+            Width="59" 
+            RenderTransformOrigin="0.07,0.437"
+        />
+        
+        <Label 
+            Content="Preis" 
+            HorizontalAlignment="Left"
+            Height="26" 
+            Margin="167,564,0,0" 
+            VerticalAlignment="Top" 
+            Width="57"
+        />
+
+        <TextBox 
+            Controls:TextBoxHelper.ClearTextButton="True" 
+            x:Name="tbAutoMarke" HorizontalAlignment="Left" 
+            Height="46"
+            Margin="282,201,0,0" 
+            TextWrapping="Wrap" 
+            Text="TextBox" 
+            VerticalAlignment="Top"
+            Width="160"
+            RenderTransformOrigin="-0.335,0.43"
+        />
+        
+        <TextBox 
+            Controls:TextBoxHelper.ClearTextButton="True"
+            x:Name="tbAutoModel" 
+            HorizontalAlignment="Left"
+            Height="46" 
+            Margin="282,291,0,0"
+            TextWrapping="Wrap"
+            Text="TextBox" 
+            VerticalAlignment="Top"
+            Width="160" 
+        />
+        
+        <TextBox 
+            Controls:TextBoxHelper.ClearTextButton="True"
+            x:Name="tbGetriebe" 
+            HorizontalAlignment="Left" 
+            Height="46" 
+            Margin="282,385,0,0" 
+            TextWrapping="Wrap"
+            Text="TextBox" 
+            VerticalAlignment="Top"
+            Width="160"
+        />
+        
+        <TextBox
+            Controls:TextBoxHelper.ClearTextButton="True"
+            x:Name="tbSitze" HorizontalAlignment="Left"
+            Margin="282,473,0,0" 
+            TextWrapping="Wrap"
+            Text="TextBox"
+            VerticalAlignment="Top"
+            Width="160" 
+            Height="46"
+        />
+        
+    <TextBox 
+        Controls:TextBoxHelper.ClearTextButton="True"
+        x:Name="tbPreis" 
+        HorizontalAlignment="Left"
+        Height="46" 
+        Margin="278,560,0,0" 
+        TextWrapping="Wrap"
+        Text="TextBox"
+        VerticalAlignment="Top"
+        Width="160" 
+        RenderTransformOrigin="0.5,0.5"
+    />
+        
+    <Button 
+        Content="Auto Hinzufügen" 
+        Click="bAutoHinzufuegen_Click" 
+        Width="148" 
+        Height="32"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Margin="726,514,0,0" 
+        RenderTransformOrigin="0.45,-0.739"
+    />
+        
+    <Button 
+        Content="Daten Aktualisieren"
+        Click="bDatenAktualisieren_Click" 
+        Width="148" 
+        Height="31" 
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top"
+        Margin="541,514,0,0"
+        RenderTransformOrigin="1.024,0.483"
+    />
+        
+    <Button 
+        Content="Auto Löschen" 
+        Click="bAutoLoeschen_Click"
+        Width="152" 
+        Height="32"
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Top" 
+        Margin="897,514,0,0" 
+        RenderTransformOrigin="0.78,6.041"
+    />
+        
+    <DataGrid 
+        x:Name="CarRegGridXAML"
+        Margin="574,216,254,240"
+    >
             <DataGrid.Columns>
             </DataGrid.Columns>
         </DataGrid>
+        
     </Grid>
 </mah:MetroWindow>

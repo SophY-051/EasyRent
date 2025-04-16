@@ -13,11 +13,47 @@
 >
 
     <Grid>
-        <TextBlock Name="Ausgabe" Grid.ColumnSpan="2"></TextBlock>
-        <Button Content="Auto Registrierung" Click="bAutoRegistrierungen_Click" Margin="487,225,487,428" Width="306" Height="51"/>
-        <Button Content="Kundenverwaltung" Click="bKundenVerwaltung_Click" Margin="487,132,487,513" Width="306"/>
-        <Button Content="Buchungen" Click="bBuchungen_Click" Margin="487,322,487,331" Width="306" Height="51"/>
-        <Button Content="Rückgabe" Click="bRueckgaben_Click" Margin="487,432,487,221" Width="306" Height="51"/>
-        <Button Content="Logout" Click="bLogout_Click"  Margin="545,522,545,155"/>
+        
+        <TextBlock 
+            Name="Ausgabe" 
+            Grid.ColumnSpan="2">
+        </TextBlock>
+        
+        <Button 
+            Content="Auto Registrierung" 
+            Click="bAutoRegistrierungen_Click" 
+            Margin="487,225,487,428" 
+            Width="306" 
+            Height="51"
+        />
+        
+        <Button 
+            Content="Kundenverwaltung" 
+            Click="bKundenVerwaltung_Click" 
+            Margin="487,132,487,513" 
+            Width="306"
+        />
+        
+        <Button 
+            Content="Buchungen" 
+            Click="bBuchungen_Click" 
+            Margin="487,322,487,331" 
+            Width="306" 
+            Height="51"
+        />
+        <Button 
+            Content="Rückgabe" 
+            Click="bRueckgaben_Click" 
+            Margin="487,432,487,221" 
+            Width="306" 
+            Height="51"
+        />
+        
+        <Button 
+            Content="Logout" 
+            Click="bLogout_Click"  
+            Margin="545,522,545,155"
+        />
+        
     </Grid>
 </mah:MetroWindow>

@@ -1,86 +1,70 @@
 ﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SQLite;
+using System.Linq;
 
 namespace EasyRentProj
 {
-    public static class KundenSQLData
+    public class KundenSQLData : DbContext
     {
-        private static string connectionString = "Data Source=kunden.db;Version=3;";
+        public static string path = ConfigurationManager.AppSettings["RENT_DB_PATH"];
 
-        public static void InitDatabase()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            using (var conn = new SQLiteConnection(connectionString))
-            {
-                //RA 22.04.2025 Datenbank initialisieren
-                conn.Open();
-                string sql = @"CREATE TABLE IF NOT EXISTS kunden (
-                                kundeID INTEGER PRIMARY KEY AUTOINCREMENT,
-                                vorname TEXT,
-                                nachname TEXT,
-                                nummer INTEGER,
-                                adresse TEXT,
-                                email TEXT)";
-                var cmd = new SQLiteCommand(sql, conn);
-                cmd.ExecuteNonQuery();
-            }
+            optionsBuilder.UseSqlite($"Data Source={path}");
         }
+
+        public DbSet<Kunde> Kunden { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Kunde>(entity =>
+            {
+                entity.HasKey(e => e.kundeID);
+                entity.Property(e => e.vorname).HasColumnType("TEXT");
+                entity.Property(e => e.nachname).HasColumnType("TEXT");
+                entity.Property(e => e.nummer).HasColumnType("INTEGER");
+                entity.Property(e => e.adresse).HasColumnType("TEXT");
+                entity.Property(e => e.email).HasColumnType("TEXT");
+            });
+        }
+
+        // Methoden zur Datenmanipulation
 
         public static List<Kunde> LoadKunden()
         {
-            var kunden = new List<Kunde>();
-
-            using (var conn = new SQLiteConnection(connectionString))
+            using (var db = new KundenSQLData())
             {
-                //RA 22.04.2025 Kunden laden
-                conn.Open();
-                var cmd = new SQLiteCommand("SELECT * FROM kunden", conn);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        kunden.Add(new Kunde
-                        {
-                            kundeID = reader.GetInt32(0),
-                            vorname = reader.GetString(1),
-                            nachname = reader.GetString(2),
-                            nummer = reader.GetInt32(3),
-                            adresse = reader.GetString(4),
-                            email = reader.GetString(5)
-                        });
-                    }
-                }
+                return db.Kunden.ToList();
             }
-
-            return kunden;
         }
 
         public static void SaveKunde(Kunde kunde)
         {
-            using (var conn = new SQLiteConnection(connectionString))
+            using (var db = new KundenSQLData())
             {
-                //RA 22.04.2025 Kunden speichern    
-                conn.Open();
-                var cmd = new SQLiteCommand("INSERT INTO kunden (vorname, nachname, nummer, adresse, email) VALUES (@v, @n, @nu, @a, @e)", conn);
-                cmd.Parameters.AddWithValue("@v", kunde.vorname);
-                cmd.Parameters.AddWithValue("@n", kunde.nachname);
-                cmd.Parameters.AddWithValue("@nu", kunde.nummer);
-                cmd.Parameters.AddWithValue("@a", kunde.adresse);
-                cmd.Parameters.AddWithValue("@e", kunde.email);
-                cmd.ExecuteNonQuery();
+                db.Kunden.Add(kunde);
+                db.SaveChanges();
             }
         }
 
         public static void DeleteKunde(Kunde kunde)
         {
-            using (var conn = new SQLiteConnection(connectionString))
+            using (var db = new KundenSQLData())
             {
-                //RA 22.04.2025 Kunden löschen
-                conn.Open();
-                var cmd = new SQLiteCommand("DELETE FROM kunden WHERE kundeID = @id", conn);
-                cmd.Parameters.AddWithValue("@id", kunde.kundeID);
-                cmd.ExecuteNonQuery();
+                db.Kunden.Remove(kunde);
+                db.SaveChanges();
+            }
+        }
+
+        public static void InitDatabase()
+        {
+            using (var db = new KundenSQLData())
+            {
+                db.Database.EnsureCreated();
             }
         }
     }

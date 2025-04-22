@@ -10,7 +10,6 @@ namespace EasyRentProj
 {
     //RA 22.04.2025 Klasse für die Datenbankverbindung
     public class UserLoginSQLData : DbContext
-
     {
         //RA 22.04.2025 Pfad zur SQLite-Datenbank über Umgebungsvariable
         public static string path = ConfigurationManager.AppSettings["RENT_DB_PATH"];
@@ -22,7 +21,7 @@ namespace EasyRentProj
         }
 
         //RA 22.04.2025 DbSet für die User-Tabelle
-        public DbSet<User> User { get; set; }s
+        public DbSet<User> User { get; set; }
 
     }
     

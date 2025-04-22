@@ -25,5 +25,15 @@ namespace EasyRentProj
         {
             InitializeComponent();
         }
+
+        private void bRueckgabeSpeichern_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void bRueckgabeLoeschen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

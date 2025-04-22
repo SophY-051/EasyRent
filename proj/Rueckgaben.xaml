@@ -1,16 +1,130 @@
 ﻿<mah:MetroWindow x:Class="EasyRentProj.Rueckgaben"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EasyRentProj"
-        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        mc:Ignorable="d"
-        Title="EasyRent Rückgaben"   Height="1080" 
-        Width="1920"  
-        WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
-    <Grid>
-        
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:EasyRentProj"
+    xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    mc:Ignorable="d"
+    Title="EasyRent Rückgaben" Height="720" Width="1280"
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            
+            <ColumnDefinition 
+                Width="*" />
+            
+            <ColumnDefinition 
+                Width="2*" />
+            
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            
+            <RowDefinition 
+                Height="Auto"/>
+            <RowDefinition 
+                Height="*" />
+            <RowDefinition 
+                Height="Auto"/>
+            
+        </Grid.RowDefinitions>
+
+
+        <StackPanel 
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Margin="12,26,8,55" 
+            Grid.RowSpan="2">
+            
+            <TextBlock 
+                Text="Rückgabe erfassen" 
+                FontSize="18" 
+                FontWeight="Bold" 
+                Margin="0,0,0,10"/>
+
+            <Label 
+                Content="Fahrzeug" />
+            
+            <ComboBox 
+                x:Name="cbFahrzeug" 
+                Margin="0,0,0,10"/>
+
+            <Label 
+                Content="Kunde" />
+            
+            <ComboBox 
+                x:Name="cbKunde" 
+                Margin="0,0,0,10"/>
+
+            <Label 
+                Content="Kilometerstand bei Rückgabe" />
+            
+            <TextBox 
+                x:Name="tbKilometerstand" 
+                Margin="0,0,0,10"/>
+
+            <Label 
+                Content="Tankstand (in l)" />
+            
+            <TextBox 
+                x:Name="tbTankstand"
+                Margin="0,0,0,10"/>
+
+            <Label 
+                Content="Schäden" />
+            
+            <TextBox 
+                x:Name="tbSchaeden" 
+                Margin="0,0,0,10" 
+                AcceptsReturn="True" 
+                Height="60"/>
+
+            <Label 
+                Content="Bemerkung" />
+            <TextBox 
+                x:Name="tbBemerkung" 
+                Margin="0,0,0,10" 
+                AcceptsReturn="True" 
+                Height="60"/>
+
+            <Label 
+                Content="Rückgabedatum" />
+            
+            <DatePicker 
+                x:Name="dpRueckgabedatum" 
+                Margin="0,0,0,10"/>
+            
+        </StackPanel>
+
+
+        <DataGrid x:Name="RueckgabenGrid"
+                  AutoGenerateColumns="True"
+                  Margin="10,10,10,485"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow" Grid.Column="1" />
+
+        <StackPanel 
+            Grid.Row="2" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2" 
+            Orientation="Horizontal" 
+            HorizontalAlignment="Center" 
+            Margin="0,20,0,0">
+            
+            <Button 
+                Content="Rückgabe Speichern" 
+                Click="bRueckgabeSpeichern_Click"
+                Width="180" 
+                Margin="10,0"/>
+            
+            <Button 
+                Content="Rückgabe Löschen"
+                Click="bRueckgabeLoeschen_Click"
+                Width="180"
+                Margin="10,0"/>
+            
+        </StackPanel>
     </Grid>
-</mah:MetroWindow>

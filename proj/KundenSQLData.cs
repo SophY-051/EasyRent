@@ -13,6 +13,7 @@ namespace EasyRentProj
         {
             using (var conn = new SQLiteConnection(connectionString))
             {
+                //RA 22.04.2025 Datenbank initialisieren
                 conn.Open();
                 string sql = @"CREATE TABLE IF NOT EXISTS kunden (
                                 kundeID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,6 +33,7 @@ namespace EasyRentProj
 
             using (var conn = new SQLiteConnection(connectionString))
             {
+                //RA 22.04.2025 Kunden laden
                 conn.Open();
                 var cmd = new SQLiteCommand("SELECT * FROM kunden", conn);
                 using (var reader = cmd.ExecuteReader())
@@ -58,6 +60,7 @@ namespace EasyRentProj
         {
             using (var conn = new SQLiteConnection(connectionString))
             {
+                //RA 22.04.2025 Kunden speichern    
                 conn.Open();
                 var cmd = new SQLiteCommand("INSERT INTO kunden (vorname, nachname, nummer, adresse, email) VALUES (@v, @n, @nu, @a, @e)", conn);
                 cmd.Parameters.AddWithValue("@v", kunde.vorname);
@@ -73,6 +76,7 @@ namespace EasyRentProj
         {
             using (var conn = new SQLiteConnection(connectionString))
             {
+                //RA 22.04.2025 Kunden löschen
                 conn.Open();
                 var cmd = new SQLiteCommand("DELETE FROM kunden WHERE kundeID = @id", conn);
                 cmd.Parameters.AddWithValue("@id", kunde.kundeID);

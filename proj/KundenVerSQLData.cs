@@ -12,7 +12,7 @@ namespace EasyRentProj
 {
     class KundenVerSQLData
     {
-        //SoRe 31.03.2025 Systemvariabel: RENT_DB_PATH erstellt so das jeder Benutzer sein eigenen Speicherort für die DB aufrufen kann
+        //SR 31.03.2025 Systemvariabel: RENT_DB_PATH erstellt so das jeder Benutzer sein eigenen Speicherort für die DB aufrufen kann
         private static string path = ConfigurationManager.AppSettings["RENT_DB_PATH"];
 
         public static string Path { get => path; set => path = value; }

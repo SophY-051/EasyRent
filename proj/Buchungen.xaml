@@ -12,57 +12,57 @@
         ResizeMode="NoResize"
         TitleCharacterCasing="Normal">
     <Grid>
-        
+
         <Label 
             Content="Buchungs-ID" 
             HorizontalAlignment="Left" 
             Height="28"
-            Margin="167,107,0,0"
+            Margin="156,185,0,0"
             VerticalAlignment="Top"
             Width="100"
         />
-        
+
         <Label
-            Content="Auto Registrierungsnummer"
+            Content="Autoregistrierungsnr."
             HorizontalAlignment="Left"
             Height="36"
-            Margin="167,157,0,0" 
+            Margin="156,235,0,0" 
             VerticalAlignment="Top"
             Width="161"
         />
-        
+
         <Label 
-            Content="Kunde Name" 
+            Content="Kundenname" 
             HorizontalAlignment="Left" 
             Height="28" 
-            Margin="167,219,0,0" 
+            Margin="156,297,0,0" 
             VerticalAlignment="Top"
             Width="100"
         />
-        
+
         <Label 
             Content="Start Datum" 
             HorizontalAlignment="Left" 
             Height="28"
-            Margin="167,270,0,0" 
+            Margin="156,348,0,0" 
             VerticalAlignment="Top"
             Width="100"
         />
-        
+
         <Label 
             Content="End Datum" 
             HorizontalAlignment="Left"
             Height="28"
-            Margin="167,319,0,0"
+            Margin="156,397,0,0"
             VerticalAlignment="Top" 
             Width="100"
         />
-        
+
         <Label 
-            Content="Gesamt Preis" 
+            Content="Gesamtpreis" 
             HorizontalAlignment="Left"
             Height="28"
-            Margin="167,369,0,0" 
+            Margin="156,447,0,0" 
             VerticalAlignment="Top"
             Width="100"
         />
@@ -71,47 +71,47 @@
             x:Name="tbBuchungsID" 
             HorizontalAlignment="Left" 
             Height="22" 
-            Margin="272,109,0,0" 
+            Margin="316,187,0,0" 
             VerticalAlignment="Top"
             Width="111"
             IsReadOnly="True"
         />
-        
+
         <ComboBox 
             x:Name="cbAutoAuswahl" 
             HorizontalAlignment="Left"
             Height="28"
-            Margin="354,165,0,0"
+            Margin="317,235,0,0"
             VerticalAlignment="Top"
-            Width="111"
+            Width="110"
             DisplayMemberPath="autoID"
         />
-        
+
         <DatePicker
             Name="dpStartDatum" 
             Controls:TextBoxHelper.Watermark="Start Datum" 
             HorizontalAlignment="Left" 
             Height="23" 
-            Margin="272,272,0,0" 
+            Margin="316,348,0,0" 
             VerticalAlignment="Top" 
             Width="111"
         />
-        
+
         <DatePicker 
             Name="dpEndDatum" 
             Controls:TextBoxHelper.Watermark="End Datum"
             HorizontalAlignment="Left"
             Height="23"
-            Margin="272,321,0,0" 
+            Margin="316,399,0,0" 
             VerticalAlignment="Top" 
             Width="111"
         />
-        
+
         <TextBox 
             x:Name="tbGesamtPreis" 
             HorizontalAlignment="Left" 
             Height="22" 
-            Margin="272,371,0,0" 
+            Margin="317,448,0,0" 
             VerticalAlignment="Top"
             Width="111"
             IsReadOnly="True"
@@ -126,7 +126,7 @@
             VerticalAlignment="Top" 
             Margin="512,499,0,0"
         />
-        
+
         <Button 
             Content="Daten Aktualisieren"
             Click="bDatenAktualisieren_Click"
@@ -134,9 +134,9 @@
             Height="36" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top"
-            Margin="739,498,0,0"
+            Margin="722,498,0,0"
         />
-        
+
         <Button 
             Content="Buchung Löschen" 
             Click="bBuchungLoeschen_Click" 
@@ -155,6 +155,6 @@
             <DataGrid.Columns>
             </DataGrid.Columns>
         </DataGrid>
-        
+
     </Grid>
 </mah:MetroWindow>

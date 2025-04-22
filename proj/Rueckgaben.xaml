@@ -12,24 +12,24 @@
 
     <Grid Margin="20">
         <Grid.ColumnDefinitions>
-            
+
             <ColumnDefinition 
                 Width="*" />
-            
+
             <ColumnDefinition 
                 Width="2*" />
-            
+
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            
+
             <RowDefinition 
                 Height="Auto"/>
             <RowDefinition 
                 Height="*" />
             <RowDefinition 
                 Height="Auto"/>
-            
+
         </Grid.RowDefinitions>
 
 
@@ -38,7 +38,7 @@
             Grid.Column="0" 
             Margin="12,26,8,55" 
             Grid.RowSpan="2">
-            
+
             <TextBlock 
                 Text="Rückgabe erfassen" 
                 FontSize="18" 
@@ -47,35 +47,35 @@
 
             <Label 
                 Content="Fahrzeug" />
-            
+
             <ComboBox 
                 x:Name="cbFahrzeug" 
                 Margin="0,0,0,10"/>
 
             <Label 
                 Content="Kunde" />
-            
+
             <ComboBox 
                 x:Name="cbKunde" 
                 Margin="0,0,0,10"/>
 
             <Label 
                 Content="Kilometerstand bei Rückgabe" />
-            
+
             <TextBox 
                 x:Name="tbKilometerstand" 
                 Margin="0,0,0,10"/>
 
             <Label 
                 Content="Tankstand (in l)" />
-            
+
             <TextBox 
                 x:Name="tbTankstand"
                 Margin="0,0,0,10"/>
 
             <Label 
                 Content="Schäden" />
-            
+
             <TextBox 
                 x:Name="tbSchaeden" 
                 Margin="0,0,0,10" 
@@ -92,11 +92,11 @@
 
             <Label 
                 Content="Rückgabedatum" />
-            
+
             <DatePicker 
                 x:Name="dpRueckgabedatum" 
                 Margin="0,0,0,10"/>
-            
+
         </StackPanel>
 
 
@@ -113,18 +113,19 @@
             Orientation="Horizontal" 
             HorizontalAlignment="Center" 
             Margin="0,20,0,0">
-            
+
             <Button 
                 Content="Rückgabe Speichern" 
                 Click="bRueckgabeSpeichern_Click"
                 Width="180" 
                 Margin="10,0"/>
-            
+
             <Button 
                 Content="Rückgabe Löschen"
                 Click="bRueckgabeLoeschen_Click"
                 Width="180"
                 Margin="10,0"/>
-            
+
         </StackPanel>
     </Grid>
+</mah:MetroWindow>

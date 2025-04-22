@@ -163,8 +163,8 @@
         <DataGrid 
             x:Name="KundenGridXAML" 
             Margin="574,216,254,240" 
-            SelectionChanged="KundenGridXAML_SelectionChanged">
-
+            SelectionChanged="KundenGridXAML_SelectionChanged"
+        >
             <DataGrid.Columns>
             </DataGrid.Columns>
         </DataGrid>

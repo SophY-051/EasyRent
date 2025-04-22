@@ -19,8 +19,8 @@ namespace EasyRentProj
 
          private void LoadKunden()
           {
-        //    kunden = new ObservableCollection<Kunde>(KundenSQLData.LoadKunden());
-        //    WireUpKundenList();
+           kunden = new ObservableCollection<Kunde>(KundenSQLData.LoadKunden());
+           WireUpKundenList();
           }
 
         private void WireUpKundenList()
@@ -31,35 +31,35 @@ namespace EasyRentProj
 
           private void bKundeHinzufuegen_Click(object sender, RoutedEventArgs e)
           {
-        //    Kunde kunde = new Kunde();
-        //    try
-        //    {
-        //        kunde.vorname = tbVorname.Text;
-        //        kunde.nachname = tbNachname.Text;
-        //        kunde.nummer = int.Parse(tbNummer.Text);
-        //        kunde.adresse = tbAdresse.Text;
-        //        kunde.email = tbEmail.Text;
+            Kunde kunde = new Kunde();
+            try
+           {
+               kunde.vorname = tbVorname.Text;
+               kunde.nachname = tbNachname.Text;
+               kunde.nummer = int.Parse(tbNummer.Text);
+               kunde.adresse = tbAdresse.Text;
+               kunde.email = tbEmail.Text;
 
-        //        KundenSQLData.SaveKunde(kunde);
-        //        kunden.Add(kunde);
-        //        WireUpKundenList();
-        //        LoadKunden();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Fehler beim Hinzufügen: {ex.Message}");
-        //    }
+               KundenSQLData.SaveKunde(kunde);
+               kunden.Add(kunde);
+               WireUpKundenList();
+               LoadKunden();
+           }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Fehler beim Hinzufügen: {ex.Message}");
+            }
           }
 
         private void bKundeLoeschen_Click(object sender, RoutedEventArgs e)
         {
-        //    var selectedKunden = KundenGridXAML.SelectedItems.Cast<Kunde>().ToList();
-        //    foreach (var kunde in selectedKunden)
-        //    {
-        //        kunden.Remove(kunde);
-        //        KundenSQLData.DeleteKunde(kunde);
-        //    }
-        //    WireUpKundenList();
+            var selectedKunden = KundenGridXAML.SelectedItems.Cast<Kunde>().ToList();
+            foreach (var kunde in selectedKunden)
+            {
+                kunden.Remove(kunde);
+                KundenSQLData.DeleteKunde(kunde);
+            }
+            WireUpKundenList();
         }
 
         private void bDatenAktualisieren_Click(object sender, RoutedEventArgs e)

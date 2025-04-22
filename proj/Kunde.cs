@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EasyRentProj
 {
-    class Kunde
+    public class Kunde
     {
         //SR 31.03.25 Eigenschafen der Kunden-Klasse
         public int kundeID { get; set; }

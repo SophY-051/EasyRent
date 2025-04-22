@@ -1,27 +1,83 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SQLite;
 
 namespace EasyRentProj
 {
-    public class KundenSQLData
+    public static class KundenSQLData
     {
+        private static string connectionString = "Data Source=kunden.db;Version=3;";
+
+        public static void InitDatabase()
+        {
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string sql = @"CREATE TABLE IF NOT EXISTS kunden (
+                                kundeID INTEGER PRIMARY KEY AUTOINCREMENT,
+                                vorname TEXT,
+                                nachname TEXT,
+                                nummer INTEGER,
+                                adresse TEXT,
+                                email TEXT)";
+                var cmd = new SQLiteCommand(sql, conn);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public static List<Kunde> LoadKunden()
         {
-            // Datenbankabfrage hier
-            return new List<Kunde>();
+            var kunden = new List<Kunde>();
+
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("SELECT * FROM kunden", conn);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        kunden.Add(new Kunde
+                        {
+                            kundeID = reader.GetInt32(0),
+                            vorname = reader.GetString(1),
+                            nachname = reader.GetString(2),
+                            nummer = reader.GetInt32(3),
+                            adresse = reader.GetString(4),
+                            email = reader.GetString(5)
+                        });
+                    }
+                }
+            }
+
+            return kunden;
         }
 
         public static void SaveKunde(Kunde kunde)
         {
-            // Speichern des Kunden in der DB
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("INSERT INTO kunden (vorname, nachname, nummer, adresse, email) VALUES (@v, @n, @nu, @a, @e)", conn);
+                cmd.Parameters.AddWithValue("@v", kunde.vorname);
+                cmd.Parameters.AddWithValue("@n", kunde.nachname);
+                cmd.Parameters.AddWithValue("@nu", kunde.nummer);
+                cmd.Parameters.AddWithValue("@a", kunde.adresse);
+                cmd.Parameters.AddWithValue("@e", kunde.email);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public static void DeleteKunde(Kunde kunde)
         {
-            // Löschen des Kunden aus der DB
+            using (var conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                var cmd = new SQLiteCommand("DELETE FROM kunden WHERE kundeID = @id", conn);
+                cmd.Parameters.AddWithValue("@id", kunde.kundeID);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

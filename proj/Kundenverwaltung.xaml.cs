@@ -14,6 +14,7 @@ namespace EasyRentProj
         public KundenVerwaltung()
         {
             InitializeComponent();
+            KundenSQLData.InitDatabase();
             LoadKunden();
         }
 

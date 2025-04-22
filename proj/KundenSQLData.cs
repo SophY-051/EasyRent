@@ -10,6 +10,7 @@ namespace EasyRentProj
 {
     public class KundenSQLData : DbContext
     {
+        //RA 22.04.2025 Pfad zur SQLite-Datenbank über Umgebungsvariable
         public static string path = ConfigurationManager.AppSettings["RENT_DB_PATH"];
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -17,8 +18,10 @@ namespace EasyRentProj
             optionsBuilder.UseSqlite($"Data Source={path}");
         }
 
+        //RA 22.04.2025 DbSet für die Kunden-Tabelle
         public DbSet<Kunde> Kunden { get; set; }
 
+        //RA 22.04.2025 Zusammenstellung von der Kunden-Tabelle
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Kunde>(entity =>
@@ -32,8 +35,7 @@ namespace EasyRentProj
             });
         }
 
-        // Methoden zur Datenmanipulation
-
+        //RA 22.04.2025 Methoden zum Laden, Speichern und Löschen von Kunden
         public static List<Kunde> LoadKunden()
         {
             using (var db = new KundenSQLData())
@@ -60,6 +62,7 @@ namespace EasyRentProj
             }
         }
 
+        //RA 22.04.2025 Methode zum Initialisieren der Datenbank
         public static void InitDatabase()
         {
             using (var db = new KundenSQLData())

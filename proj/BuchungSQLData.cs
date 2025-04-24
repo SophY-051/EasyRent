@@ -64,11 +64,19 @@ namespace EasyRentProj
             {
                 if (CheckVerfügbarkeit(buchung.autoID, buchung.startDatum, buchung.endDatum))
                 {
-                    buchung.verfügbarkeit  = false; // Auto wird gebucht, also nicht verfügbar
+                    buchung.verfügbarkeit = false; // Auto wird gebucht, also nicht verfügbar  
                     cnn.Execute(
-                        "INSERT INTO tBuchungen (startDatum, endDatum, buchungPreis, autoID, kundeID, verfügbarkeit ) " +
-                        "VALUES (@startDatum, @endDatum, @buchungPreis, @autoID, @kundeID, @verfügbarkeit )",
-                        buchung
+                        "INSERT INTO tBuchungen (startDatum, endDatum, buchungPreis, autoID, kundeID, verfügbarkeit) " +
+                        "VALUES (@startDatum, @endDatum, @buchungPreis, @autoID, @kundeID, @verfügbarkeit)",
+                        new
+                        {
+                            buchung.startDatum,
+                            buchung.endDatum,
+                            buchung.buchungPreis,
+                            buchung.autoID,
+                            buchung.kundeID,
+                            verfügbarkeit = false // Sicherstellen, dass der Wert korrekt übergeben wird  
+                        }
                     );
                 }
                 else

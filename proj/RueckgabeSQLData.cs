@@ -53,22 +53,33 @@ namespace EasyRentProj
         {
             using (IDbConnection cnn = new SqliteConnection($"Data Source={path}"))
             {
+                // Überprüfen, ob die Buchung existiert und verfügbar ist  
                 var buchung = cnn.QueryFirstOrDefault<Buchung>(
-                    "SELECT * FROM tBuchungen WHERE buchungID = @buchungID AND verfügbarkeit = 0 AND @rueckgabeDatum BETWEEN startDatum AND endDatum",
-                    new { rueckgabe.buchungID, rueckgabe.rueckgabeDatum });
+                    "SELECT * FROM tBuchungen WHERE buchungID = @buchungID",
+                    new { buchungID = rueckgabe.buchungID });
 
-                if (buchung == null)
+                // Wenn keine Buchung gefunden wird, eine detaillierte Fehlermeldung ausgeben  
+                if (buchung == null || buchung.verfügbarkeit)
                 {
-                    throw new Exception("Die Rückgabe kann nicht gespeichert werden. Entweder existiert die Buchung nicht oder das Auto ist nicht im Rückgabezeitraum gebucht.");
+                    string verfuegbarkeitStatus = buchung == null ? "Buchung nicht gefunden" : buchung.verfügbarkeit.ToString();
+                    throw new Exception($"Die Rückgabe kann nicht gespeichert werden. Entweder existiert die Buchung mit der ID {rueckgabe.buchungID} nicht oder das Auto ist nicht verfügbar. Verfügbarkeitsstatus: {verfuegbarkeitStatus}");
                 }
 
+                // Kunden-ID aus der Buchung übernehmen, falls sie in der Rückgabe nicht gesetzt ist  
+                if (rueckgabe.kundeID == 0)
+                {
+                    rueckgabe.kundeID = buchung.kundeID;
+                }
+
+                // Rückgabe speichern  
                 cnn.Execute(
-                    "INSERT INTO tRueckgabe (kmstand, tankstand, schaeden, bemerkung, rueckgabeDatum, buchungID) VALUES (@kmstand, @tankstand, @schaeden, @bemerkung, @rueckgabeDatum, @buchungID)",
+                    "INSERT INTO tRueckgabe (kmstand, tankstand, schaeden, bemerkung, rueckgabeDatum, buchungID, kundeID, autoID) VALUES (@kmstand, @tankstand, @schaeden, @bemerkung, @rueckgabeDatum, @buchungID, @kundeID)",
                     rueckgabe);
 
+                // Verfügbarkeit der Buchung aktualisieren  
                 cnn.Execute(
-                    "UPDATE tBuchungen SET verfügbarkeit = 1 WHERE buchungID = @buchungID",
-                    new { rueckgabe.buchungID });
+                    "UPDATE tBuchungen SET verfügbarkeit = true WHERE buchungID = @buchungID",
+                    new { buchungID = rueckgabe.buchungID });
             }
         }
 

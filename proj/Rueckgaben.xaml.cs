@@ -21,6 +21,7 @@ namespace EasyRentProj
             InitializeComponent();
             LoadReturns();
             LoadLaufendeBuchungen();
+            LoadBuchungID();
         }
 
         private void LoadReturns()
@@ -31,7 +32,6 @@ namespace EasyRentProj
 
         private void LoadLaufendeBuchungen()
         {
-            MessageBox.Show("Lade laufende Buchungen...");
             // Nur Buchungen laden, bei denen das Auto aktuell *nicht* verfügbar ist (also vermietet)
             var alleBuchungen = BuchungSQLData.LoadBookings();
             laufendeBuchungen = alleBuchungen.Where(b => !b.verfügbarkeit).ToList();
@@ -91,6 +91,15 @@ namespace EasyRentProj
             }
         }
 
+
+        private void LoadBuchungID()
+        {
+            var buchungIDs = BuchungSQLData.LoadBookings();
+            cbBuchungAuswahl.ItemsSource = buchungIDs;
+            cbBuchungAuswahl.DisplayMemberPath = "buchungID"; // Anzeige der Buchungs-ID
+            cbBuchungAuswahl.SelectedValuePath = "buchungID"; // Wert für .Selec
+        }
+
         private void bRueckgabeLoeschen_Click(object sender, RoutedEventArgs e)
         {
             var selectedReturns = RueckgabeGridXAML.SelectedItems.Cast<Rueckgabe>().ToList();
@@ -107,6 +116,7 @@ namespace EasyRentProj
         {
             LoadReturns();
             LoadLaufendeBuchungen();
+            LoadBuchungID();
         }
 
         private void RueckgabeGridXAML_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -45,9 +45,15 @@ namespace EasyRentProj
         {
             using (IDbConnection cnn = new SqliteConnection($"Data Source={path}"))
             {
+                // 1. Rückgabe löschen
                 cnn.Execute("DELETE FROM tRueckgabe WHERE rueckgabeID = @rueckgabeID", rueckgabe);
+
+                // 2. Verfügbarkeit der Buchung auf FALSE setzen
+                cnn.Execute("UPDATE tBuchungen SET verfügbarkeit = false WHERE buchungID = @buchungID",
+                    new { buchungID = rueckgabe.buchungID });
             }
         }
+
 
         public static void SaveReturns(Rueckgabe rueckgabe)
         {
@@ -73,7 +79,7 @@ namespace EasyRentProj
 
                 // Rückgabe speichern  
                 cnn.Execute(
-                    "INSERT INTO tRueckgabe (kmstand, tankstand, schaeden, bemerkung, rueckgabeDatum, buchungID, kundeID, autoID) VALUES (@kmstand, @tankstand, @schaeden, @bemerkung, @rueckgabeDatum, @buchungID, @kundeID)",
+                    "INSERT INTO tRueckgabe (kmstand, tankstand, schaeden, bemerkung, rueckgabeDatum, buchungID, kundeID, autoID) VALUES (@kmstand, @tankstand, @schaeden, @bemerkung, @rueckgabeDatum, @buchungID, @kundeID, @autoID)",
                     rueckgabe);
 
                 // Verfügbarkeit der Buchung aktualisieren  

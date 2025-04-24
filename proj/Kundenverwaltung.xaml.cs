@@ -35,7 +35,13 @@ namespace EasyRentProj
             Kunde kunde = new Kunde();
             try
            {
-               kunde.vorname = tbVorname.Text;
+               if (!tbEmail.Text.Contains("@"))
+                {
+                    MessageBox.Show("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+                    return;
+                }
+
+                kunde.vorname = tbVorname.Text;
                kunde.nachname = tbNachname.Text;
                kunde.nummer = (int)long.Parse(tbNummer.Text);
                kunde.adresse = tbAdresse.Text;

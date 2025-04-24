@@ -94,5 +94,17 @@ namespace EasyRentProj
 
         }
 
+        private void CarRegGridXAML_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (CarRegGridXAML.SelectedItem is Auto selectedAuto)
+            {
+                tbAutoMarke.Text = selectedAuto.autoMarke;
+                tbAutoModel.Text = selectedAuto.autoModel;
+                tbGetriebe.Text = selectedAuto.autoGetriebe;
+                tbSitze.Text = selectedAuto.autoSitze;
+                tbPreis.Text = selectedAuto.autoPreis.ToString();
+            }
+        }
+
     }
 }

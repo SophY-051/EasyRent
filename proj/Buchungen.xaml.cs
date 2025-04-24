@@ -22,6 +22,17 @@ namespace EasyRentProj
             cbAutoAuswahl.ItemsSource = autoIDs;
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Kunden laden
+            var kundenListe = KundenSQLData.LoadKunden();
+
+            // ComboBox mit den KundenIDs füllen
+            cbKundeAuswahl.ItemsSource = kundenListe;
+            cbKundeAuswahl.DisplayMemberPath = "kundeID"; // was angezeigt wird
+            cbKundeAuswahl.SelectedValuePath = "kundeID"; // was als Wert intern verwendet wird
+        }
+
         private void LoadBookings()
         {
             buchungen = new ObservableCollection<Buchung>(BuchungSQLData.LoadBookings());
@@ -38,6 +49,7 @@ namespace EasyRentProj
         {
             try
             {
+                int kundeID = Convert.ToInt32(cbKundeAuswahl.SelectedValue);
                 int autoID = GetSelectedAutoID();
                 if (autoID == 0)
                 {
@@ -48,6 +60,7 @@ namespace EasyRentProj
                 Buchung buchung = new Buchung
                 {
                     autoID = autoID,
+                    kundeID = kundeID,
                     startDatum = dpStartDatum.SelectedDate.Value,
                     endDatum = dpEndDatum.SelectedDate.Value,
                     buchungPreis = BerechneGesamtPreis(autoID, dpStartDatum.SelectedDate.Value, dpEndDatum.SelectedDate.Value)

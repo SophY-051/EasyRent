@@ -65,7 +65,7 @@
             Height="46"
             Margin="282,201,0,0" 
             TextWrapping="Wrap" 
-            Text="TextBox" 
+            Text="" 
             VerticalAlignment="Top"
             Width="160"
             RenderTransformOrigin="-0.335,0.43"
@@ -78,7 +78,7 @@
             Height="46" 
             Margin="282,291,0,0"
             TextWrapping="Wrap"
-            Text="TextBox" 
+            Text="" 
             VerticalAlignment="Top"
             Width="160" 
         />
@@ -90,7 +90,7 @@
             Height="46" 
             Margin="282,385,0,0" 
             TextWrapping="Wrap"
-            Text="TextBox" 
+            Text="" 
             VerticalAlignment="Top"
             Width="160"
         />
@@ -100,7 +100,7 @@
             x:Name="tbSitze" HorizontalAlignment="Left"
             Margin="282,473,0,0" 
             TextWrapping="Wrap"
-            Text="TextBox"
+            Text=""
             VerticalAlignment="Top"
             Width="160" 
             Height="46"
@@ -113,7 +113,7 @@
         Height="46" 
         Margin="278,560,0,0" 
         TextWrapping="Wrap"
-        Text="TextBox"
+        Text=""
         VerticalAlignment="Top"
         Width="160" 
         RenderTransformOrigin="0.5,0.5"
@@ -155,6 +155,7 @@
     <DataGrid 
         x:Name="CarRegGridXAML"
         Margin="574,216,254,240"
+        SelectionChanged="CarRegGridXAML_SelectionChanged"
     >
             <DataGrid.Columns>
             </DataGrid.Columns>

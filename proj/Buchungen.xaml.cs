@@ -16,6 +16,7 @@ namespace EasyRentProj
             LoadAutoID();
         }
 
+
         private void LoadAutoID()
         {
             var autoIDs = AutoRegSQLData.LoadCar();
@@ -51,6 +52,7 @@ namespace EasyRentProj
             {
                 int kundeID = Convert.ToInt32(cbKundeAuswahl.SelectedValue);
                 int autoID = GetSelectedAutoID();
+                int buchungID = Convert.ToInt32(tbBuchungsID.Text);
                 if (autoID == 0)
                 {
                     MessageBox.Show("Bitte wählen Sie ein Auto aus!");
@@ -59,6 +61,7 @@ namespace EasyRentProj
 
                 Buchung buchung = new Buchung
                 {
+                    buchungID = buchungID,
                     autoID = autoID,
                     kundeID = kundeID,
                     startDatum = dpStartDatum.SelectedDate.Value,
@@ -75,6 +78,7 @@ namespace EasyRentProj
                 MessageBox.Show($"Fehler: {ex.Message}");
             }
         }
+
 
         private int GetSelectedAutoID()
         {

@@ -37,7 +37,7 @@ namespace EasyRentProj
            {
                kunde.vorname = tbVorname.Text;
                kunde.nachname = tbNachname.Text;
-               kunde.nummer = int.Parse(tbNummer.Text);
+               kunde.nummer = (int)long.Parse(tbNummer.Text);
                kunde.adresse = tbAdresse.Text;
                kunde.email = tbEmail.Text;
 

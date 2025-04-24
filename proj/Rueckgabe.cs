@@ -10,7 +10,7 @@ namespace EasyRentProj
 {
     public class Rueckgabe
     {
-        public int rueckgabeId { get; set; }
+        public int rueckgabeID { get; set; }
 
         public int kmstand { get; set; }
 

@@ -8,17 +8,13 @@ using System.Linq;
 
 namespace EasyRentProj
 {
-    // SR 26.03.2025 DB file für Buchungen erstellt
     class BuchungSQLData
     {
         private static string path => GetDatabasePath();
 
         private static string GetDatabasePath()
         {
-            // Erst Umgebungsvariable lesen
             string envPath = Environment.GetEnvironmentVariable("RENT_DB_PATH");
-
-            // Fallback auf App.config
             if (string.IsNullOrEmpty(envPath))
             {
                 envPath = ConfigurationManager.AppSettings["RENT_DB_PATH"];
@@ -36,9 +32,16 @@ namespace EasyRentProj
         {
             using (IDbConnection cnn = new SqliteConnection($"Data Source={path}"))
             {
-                // SR 26.03.2025 Methode, um alle Buchungen zu laden
                 var output = cnn.Query<Buchung>("SELECT * FROM tBuchungen", new DynamicParameters());
                 return output.ToList();
+            }
+        }
+
+        public static Buchung GetSelectedBuchungID(int buchungID)
+        {
+            using (IDbConnection cnn = new SqliteConnection($"Data Source={path}"))
+            {
+                return cnn.QueryFirstOrDefault<Buchung>("SELECT * FROM tBuchungen WHERE buchungID = @buchungID", new { buchungID });
             }
         }
 
@@ -50,7 +53,7 @@ namespace EasyRentProj
                     "SELECT * FROM tBuchungen WHERE autoID = @autoID AND ((startDatum <= @endDatum AND endDatum >= @startDatum))",
                     new { autoID, startDatum, endDatum }
                 );
-                // Verfügbarkeit ist gegeben, wenn keine bestehenden Buchungen im Zeitraum vorhanden sind
+
                 return !existingBookings.Any();
             }
         }
@@ -61,8 +64,12 @@ namespace EasyRentProj
             {
                 if (CheckVerfügbarkeit(buchung.autoID, buchung.startDatum, buchung.endDatum))
                 {
-                    buchung.verfügbarkeit = true;
-                    cnn.Execute("INSERT INTO tBuchungen (startDatum, endDatum, buchungPreis, autoID, verfügbarkeit) VALUES (@startDatum, @endDatum, @buchungPreis, @autoID, @verfügbarkeit)", buchung);
+                    buchung.verfügbarkeit  = false; // Auto wird gebucht, also nicht verfügbar
+                    cnn.Execute(
+                        "INSERT INTO tBuchungen (startDatum, endDatum, buchungPreis, autoID, kundeID, verfügbarkeit ) " +
+                        "VALUES (@startDatum, @endDatum, @buchungPreis, @autoID, @kundeID, @verfügbarkeit )",
+                        buchung
+                    );
                 }
                 else
                 {
@@ -73,7 +80,6 @@ namespace EasyRentProj
 
         public static void DeleteBooking(Buchung buchung)
         {
-            // SR 26.03.2025 Methode um Buchungen aus der Datenbank zu löschen
             using (IDbConnection cnn = new SqliteConnection($"Data Source={path}"))
             {
                 cnn.Execute("DELETE FROM tBuchungen WHERE buchungID = @buchungID", buchung);

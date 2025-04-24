@@ -15,106 +15,115 @@
         Content="Buchungs ID" 
         HorizontalAlignment="Left" 
         Height="28"
-        Margin="156,185,0,0"
+        Margin="57,217,0,0"
         VerticalAlignment="Top"
         Width="100"
     />
 
-    <Label
+        <Label
         Content="Kilometerstand"
         HorizontalAlignment="Left"
         Height="36"
-        Margin="156,235,0,0" 
+        Margin="57,264,0,0" 
         VerticalAlignment="Top"
-        Width="161"
+        Width="100"
     />
 
-    <Label 
+        <Label 
         Content="Tankstand" 
         HorizontalAlignment="Left" 
         Height="28" 
-        Margin="156,297,0,0" 
+        Margin="57,320,0,0" 
         VerticalAlignment="Top"
         Width="100"
     />
 
-    <Label 
+        <Label 
         Content="Schäden" 
         HorizontalAlignment="Left" 
         Height="28"
-        Margin="156,348,0,0" 
+        Margin="57,379,0,0" 
         VerticalAlignment="Top"
-        Width="100"
+        Width="74"
     />
 
-    <Label 
+        <Label 
         Content="Bemerkungen" 
         HorizontalAlignment="Left"
         Height="28"
-        Margin="156,397,0,0"
+        Margin="57,436,0,0"
         VerticalAlignment="Top" 
-        Width="100"
+        Width="92"
     />
 
-    <Label 
+        <Label 
         Content="Rückgabedatum" 
         HorizontalAlignment="Left"
         Height="28"
-        Margin="156,447,0,0" 
+        Margin="57,503,0,0" 
         VerticalAlignment="Top"
         Width="100"
     />
+        <TextBox
+        x:Name="tbRueckgabeID" 
+        HorizontalAlignment="Left" 
+        Height="28" 
+        Margin="182,172,0,0" 
+        VerticalAlignment="Top"
+        Width="110">
 
-    <ComboBox 
+        </TextBox>
+        <ComboBox 
         x:Name="cbBuchungAuswahl" 
         HorizontalAlignment="Left" 
         Height="22" 
-        Margin="316,187,0,0" 
+        Margin="182,218,0,0" 
         VerticalAlignment="Top"
-        Width="111"
+        Width="112"
         DisplayMemberPath="buchungID"
+        SelectedValuePath="buchungID"
     />
 
-    <TextBox
+        <TextBox
         x:Name="tbKilometerstand" 
         HorizontalAlignment="Left"
-        Height="28"
-        Margin="317,235,0,0"
+        Height="18"
+        Margin="182,264,0,0"
         VerticalAlignment="Top"
-        Width="110"
+        Width="112"
     />
 
-    <TextBox
+        <TextBox
      x:Name="tbTankstand" 
      HorizontalAlignment="Left" 
-     Margin="317,296,0,0" 
+     Margin="182,317,0,0" 
      VerticalAlignment="Top" 
-     Width="110" Height="15"
+     Width="112" Height="17"
      />
 
-    <TextBox
+        <TextBox
         x:Name="tbSchaeden" 
         HorizontalAlignment="Left" 
         Height="23" 
-        Margin="316,348,0,0" 
+        Margin="182,380,0,0" 
         VerticalAlignment="Top" 
         Width="111"
     />
 
-    <TextBlock
+        <TextBox
         x:Name="tbBemerkungen"
         HorizontalAlignment="Left"
-        Height="23"
-        Margin="316,399,0,0" 
+        Height="47"
+        Margin="182,427,0,0" 
         VerticalAlignment="Top" 
-        Width="111"
+        Width="276"
     />
 
         <DatePicker 
         Name="dpRueckgabeDatum" 
         HorizontalAlignment="Left"
         Height="22" 
-        Margin="317,448,0,0" 
+        Margin="171,503,0,0" 
         VerticalAlignment="Top"
         Width="111"
     />
@@ -129,7 +138,7 @@
         Margin="512,499,0,0"
     />
 
-    <Button 
+        <Button 
         Content="Daten Aktualisieren"
         Click="bDatenAktualisieren_Click"
         Width="132"
@@ -139,7 +148,7 @@
         Margin="722,498,0,0"
     />
 
-    <Button 
+        <Button 
         Content="Rückgabe Löschen" 
         Click="bRueckgabeLoeschen_Click" 
         Width="132" 
@@ -149,13 +158,14 @@
         Margin="934,498,0,0"
     />
 
-    <DataGrid 
+        <DataGrid 
         x:Name="RueckgabeGridXAML"
-        Margin="512,143,182,230"
+        Margin="512,125,88,230"
         SelectionChanged="RueckgabeGridXAML_SelectionChanged"
     >
-        <DataGrid.Columns>
-        </DataGrid.Columns>
-    </DataGrid>
+            <DataGrid.Columns>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Rückgabe ID" Margin="57,170,1142,504"/>
     </Grid>
 </mah:MetroWindow>

@@ -37,11 +37,11 @@ namespace EasyRentProj
            {
                if (!tbEmail.Text.Contains("@"))
                 {
-                    MessageBox.Show("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+                    MessageBox.Show("Eine Email muss immer ein '@' enthalten");
                     return;
                 }
 
-                kunde.vorname = tbVorname.Text;
+               kunde.vorname = tbVorname.Text;
                kunde.nachname = tbNachname.Text;
                kunde.nummer = (int)long.Parse(tbNummer.Text);
                kunde.adresse = tbAdresse.Text;

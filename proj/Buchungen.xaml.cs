@@ -124,16 +124,5 @@ namespace EasyRentProj
                 tbGesamtPreis.Text = selectedBuchung.buchungPreis.ToString();
             }
         }
-
-        //SoRe 24.04.2025 Methode um Registrierte Kunden in der Combobox auzuwählen
-        private string GetSelectedKundenName()
-        {
-            if (cbKundeAuswahl.SelectedItem != null)
-            {
-                var selectedKunde = (Kunde)cbKundeAuswahl.SelectedItem;
-                return $"{selectedKunde.vorname} {selectedKunde.nachname}";
-            }
-            return string.Empty;
-        }
     }
 }

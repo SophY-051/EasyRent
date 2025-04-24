@@ -37,6 +37,6 @@ namespace EasyRentProj
         }
 
         // RA 22.04.2025 DbSet für die Rueckgabe-Tabelle
-        public DbSet<Rückgabe> Rueckgaben { get; set; }
+        public DbSet<Rueckgabe> Rueckgaben { get; set; }
     }
 }

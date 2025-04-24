@@ -15,6 +15,6 @@ namespace EasyRentProj
         public int nummer { get; set; }
         public string adresse { get; set; }
         public string email { get; set; }
-        
+
     }
 }

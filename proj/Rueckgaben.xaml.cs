@@ -26,14 +26,21 @@ namespace EasyRentProj
             InitializeComponent();
         }
 
-        private void bRueckgabeSpeichern_Click(object sender, RoutedEventArgs e)
+        private void bRueckgabeHinzufuegen_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Daten aktualisiert!");
 
         }
 
         private void bRueckgabeLoeschen_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Daten aktualisiert!");
 
+        }
+
+        private void bDatenAktualisieren_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Daten aktualisiert!");
         }
     }
 }

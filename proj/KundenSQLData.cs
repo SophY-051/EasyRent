@@ -36,6 +36,7 @@ namespace EasyRentProj
             optionsBuilder.UseSqlite($"Data Source={path}");
         }
 
+
         // RA 22.04.2025 DbSet für die Kunden-Tabelle
         public DbSet<Kunde> Kunden { get; set; }
 
@@ -83,9 +84,16 @@ namespace EasyRentProj
         // RA 22.04.2025 Methode zum Initialisieren der Datenbank
         public static void InitDatabase()
         {
-            using (var db = new KundenSQLData())
+            try
             {
-                db.Database.EnsureCreated();
+                using (var db = new KundenSQLData())
+                {
+                    db.Database.EnsureCreated();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fehler beim Initialisieren der Datenbank: " + ex.Message, ex);
             }
         }
     }

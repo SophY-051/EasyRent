@@ -119,7 +119,18 @@
                 Click="bKundeLoeschen_Click" 
                 Width="160" 
                 Margin="10,0"/>
-            
+
+            <TextBox x:Name="txtSucheKundenId" 
+             Controls:TextBoxHelper.Watermark="Kunden-ID eingeben..."
+             Width="150"
+             Margin="0,0,10,0"/>
+            <Button Content="Suchen"
+            Click="btnSucheKunde_Click"
+            Width="80"/>
+            <Button Content="Alle anzeigen"
+            Click="btnAlleAnzeigen_Click"
+            Width="100"
+            Margin="10,0,0,0"/>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>

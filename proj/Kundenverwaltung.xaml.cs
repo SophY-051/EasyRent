@@ -86,5 +86,30 @@ namespace EasyRentProj
                 tbEmail.Text = selectedKunde.email;
             }
         }
+
+        private void btnSucheKunde_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(txtSucheKundenId.Text, out int kundenId))
+            {
+                var ergebnisse = KundenSQLData.SucheKundeNachId(kundenId);
+                kunden = new ObservableCollection<Kunde>(ergebnisse);
+                WireUpKundenList();
+
+                if (!ergebnisse.Any())
+                {
+                    MessageBox.Show("Kein Kunde mit dieser ID gefunden");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bitte eine gültige Kunden-ID eingeben (Zahl)");
+            }
+        }
+
+        private void btnAlleAnzeigen_Click(object sender, RoutedEventArgs e)
+        {
+            txtSucheKundenId.Text = "";
+            LoadKunden();
+        }
     }
 }

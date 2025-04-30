@@ -96,5 +96,12 @@ namespace EasyRentProj
                 throw new Exception("Fehler beim Initialisieren der Datenbank: " + ex.Message, ex);
             }
         }
+        public static List<Kunde> SucheKundeNachId(int kundenId)
+        {
+            using (var db = new KundenSQLData())
+            {
+                return db.Kunden.Where(k => k.kundeID == kundenId).ToList();
+            }
+        }
     }
 }

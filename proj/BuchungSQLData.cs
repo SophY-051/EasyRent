@@ -45,6 +45,8 @@ namespace EasyRentProj
             }
         }
 
+
+
         public static bool CheckVerfügbarkeit(int autoID, DateTime startDatum, DateTime endDatum)
         {
             using (IDbConnection cnn = new SqliteConnection($"Data Source={path}"))
@@ -93,5 +95,23 @@ namespace EasyRentProj
                 cnn.Execute("DELETE FROM tBuchungen WHERE buchungID = @buchungID", buchung);
             }
         }
+        public static int GetNextID()
+        {
+            using (IDbConnection cnn = new SqliteConnection($"Data Source={path}"))
+            {
+                // Abfrage um die maximale Buchungs-ID zu ermitteln
+                var maxID = cnn.QuerySingleOrDefault<int?>("SELECT MAX(buchungID) FROM tBuchungen");
+
+                // Wenn keine Einträge vorhanden sind starte mit 1
+                return (maxID ?? 0) + 1;
+            }
+        }
+        public string GetNextBuchungsID()
+        {
+            // Hole die nächste ID aus der Datenbank
+            int nextID = GetNextID();
+            return nextID.ToString();
+        }
+
     }
 }

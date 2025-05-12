@@ -8,6 +8,7 @@ namespace EasyRentProj
     public partial class Buchungen : MetroWindow
     {
         private ObservableCollection<Buchung> buchungen = new ObservableCollection<Buchung>();
+        private const decimal Tagespreis = 50m; // Beispiel: 50 Euro pro Tag
 
         public Buchungen()
         {
@@ -15,7 +16,6 @@ namespace EasyRentProj
             LoadBookings();
             LoadAutoID();
         }
-
 
         private void LoadAutoID()
         {
@@ -25,13 +25,12 @@ namespace EasyRentProj
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Kunden laden
+            BuchungSQLData buchungSQLData = new BuchungSQLData();
+            tbBuchungsID.Text = buchungSQLData.GetNextBuchungsID();
             var kundenListe = KundenSQLData.LoadKunden();
-
-            // ComboBox mit den KundenIDs füllen
             cbKundeAuswahl.ItemsSource = kundenListe;
-            cbKundeAuswahl.DisplayMemberPath = "kundeID"; // was angezeigt wird
-            cbKundeAuswahl.SelectedValuePath = "kundeID"; // was als Wert intern verwendet wird
+            cbKundeAuswahl.DisplayMemberPath = "kundeID";
+            cbKundeAuswahl.SelectedValuePath = "kundeID";
         }
 
         private void LoadBookings()
@@ -79,7 +78,6 @@ namespace EasyRentProj
             }
         }
 
-
         private int GetSelectedAutoID()
         {
             if (cbAutoAuswahl.SelectedItem != null)
@@ -122,6 +120,31 @@ namespace EasyRentProj
                 dpStartDatum.SelectedDate = selectedBuchung.startDatum;
                 dpEndDatum.SelectedDate = selectedBuchung.endDatum;
                 tbGesamtPreis.Text = selectedBuchung.buchungPreis.ToString();
+            }
+        }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dpStartDatum.SelectedDate.HasValue && dpEndDatum.SelectedDate.HasValue)
+            {
+                DateTime startDatum = dpStartDatum.SelectedDate.Value;
+                DateTime endDatum = dpEndDatum.SelectedDate.Value;
+
+                if (endDatum >= startDatum)
+                {
+                    int tage = (endDatum - startDatum).Days + 1;
+                    decimal gesamtpreis = tage * Tagespreis;
+                    tbGesamtPreis.Text = gesamtpreis.ToString("F2");
+                }
+                else
+                {
+                    MessageBox.Show("Das Enddatum muss nach dem Startdatum liegen.", "Ungültiger Zeitraum", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    tbGesamtPreis.Text = string.Empty;
+                }
+            }
+            else
+            {
+                tbGesamtPreis.Text = string.Empty;
             }
         }
     }
